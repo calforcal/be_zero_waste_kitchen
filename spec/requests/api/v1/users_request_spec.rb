@@ -1,8 +1,8 @@
 require "rails_helper"
 
 describe "Users API" do
-  let!(:user_1) { User.new(uid: "123", name: "Michael C", email: "michael@gmail.com", token: "ABC123") }
-  let!(:user_2) { User.new(uid: "456", name: "Carolyn C", email: "carolyn@gmail.com", token: "DEF456") }
+  let!(:user_1) { User.create!(uid: "123", name: "Michael C", email: "michael@gmail.com", token: "ABC123") }
+  let!(:user_2) { User.create!(uid: "456", name: "Carolyn C", email: "carolyn@gmail.com", token: "DEF456") }
 
   describe "Fetch One Merchant" do
     describe "happy paths" do
@@ -14,8 +14,6 @@ describe "Users API" do
         parsed = JSON.parse(response.body, symbolize_names: true)
 
         user = parsed[:data]
-
-        require 'pry'; binding.pry
 
         expect(user).to have_key(:id)
         expect(user[:id]).to be_a(String)

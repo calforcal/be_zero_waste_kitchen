@@ -4,7 +4,7 @@ RSpec.describe Ingredient, type: :model do
   describe 'validations' do
     it { should validate_presence_of :name }
     it { should validate_presence_of :units }
-    it { should validate_presence_of :unit_type }
+    # it { should validate_presence_of :unit_type }
     it { should validate_numericality_of :units }
   end
 

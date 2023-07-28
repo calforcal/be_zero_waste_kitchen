@@ -18,7 +18,7 @@ RSpec.describe User, type: :model do
     let!(:recipe_ingredients_2) { recipe_1.recipe_ingredients.create!(ingredient_id: cheese.id) }
 
     let!(:recipe_2) { Recipe.create!(name: 'Meatballs', instructions: ['1. Cook the meatballs', '2. Cover in sauce', '3. Eat!'], image_url: 'meatballs path', api_rating: 22.22, cook_time: 22, public_status: true, source_name: 'Italian Chef', source_url: 'Italian Chef Web') }
-    let!(:ground_beef) { Ingredient.create!(name: 'ground beer', units: 2.0, unit_type: 'lbs') }
+    let!(:ground_beef) { Ingredient.create!(name: 'ground beef', units: 2.0, unit_type: 'lbs') }
     let!(:eggs) { Ingredient.create!(name: 'eggs', units: 2.0, unit_type: 'oz') }
     let!(:recipe_ingredients_3) { recipe_1.recipe_ingredients.create!(ingredient_id: ground_beef.id) }
     let!(:recipe_ingredients_4) { recipe_1.recipe_ingredients.create!(ingredient_id: eggs.id) }
@@ -38,8 +38,8 @@ RSpec.describe User, type: :model do
     let!(:saved_ingredient_4) { user_1.saved_ingredients.create!(ingredient_name: eggs.name, unit_type: eggs.unit_type, units: eggs.units)}
 
     describe '#emissions_reduction' do
-      xit 'can return the total value of emissions reduced from saved ingredients' do
-        
+      it 'can return the total value of emissions reduced from saved ingredients', :vcr do
+        expect(user_1.emissions_reduction).to eq(14.136868307551117)
       end
     end
 
@@ -62,8 +62,12 @@ RSpec.describe User, type: :model do
     end
 
     describe '#user_stats' do
-      xit 'can return a condensed version of all user stats' do
-
+      it 'can return a condensed version of all user stats', :vcr do
+        expect(user_1.user_stats).to eq({
+          recipes_created: 1,
+          recipes_cooked: 1,
+          kg_emissions_saved: 14.14
+        })
       end
     end
 

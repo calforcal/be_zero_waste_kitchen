@@ -3,6 +3,5 @@ FactoryBot.define do
     uid { "MyString" }
     name { "MyString" }
     email { "MyString" }
-    token { "MyString" }
   end
 end

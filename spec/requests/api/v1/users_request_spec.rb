@@ -32,4 +32,26 @@ describe "Users API" do
       end
     end
   end
+
+  describe "Create One Merchant" do
+    describe "happy paths" do
+      it "can create one merchant" do
+        user_params = ({
+          uid: "000",
+          name: "Busta Rhymes",
+          email: "busta@gmail.com",
+          token: "A3000"
+        })
+
+        headers = {"CONTENT_TYPE" => "application/json"}
+        post api_v1_users_path, headers: headers, params: JSON.generate(user: user_params)
+        created_user = User.last
+
+        expect(created_user.uid).to eq(user_params[:uid])
+        expect(created_user.name).to eq(user_params[:name])
+        expect(created_user.email).to eq(user_params[:email])
+        expect(created_user.token).to eq(user_params[:token])
+      end
+    end
+  end
 end

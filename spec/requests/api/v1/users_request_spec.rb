@@ -36,8 +36,7 @@ describe "Users API" do
         user_params = ({
           uid: "000",
           name: "Busta Rhymes",
-          email: "busta@gmail.com",
-          token: "A3000"
+          email: "busta@gmail.com"
         })
 
         headers = {"CONTENT_TYPE" => "application/json"}

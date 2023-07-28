@@ -7,4 +7,6 @@ class Recipe < ApplicationRecord
   validates :instructions, presence: true
   validates :cook_time, presence: true, numericality: true
   validates :public_status, presence: true
+
+  
 end

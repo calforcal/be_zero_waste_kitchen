@@ -14,4 +14,8 @@ class SpoonacularService
     search = ingr_array.join(",+")
     get_url("findByIngredients?ingredients=#{search}")
   end
+
+  def recipe_by_id(id)
+    get_url("#{id.to_i}/information")
+  end
 end

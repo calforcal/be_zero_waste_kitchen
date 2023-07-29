@@ -22,6 +22,6 @@ class SpoonacularService
   def recipes_by_name(name)
     search = name.split(" ")
     query = search.join(",+")
-    stuff = get_url("complexSearch?query=#{query}")
+    get_url("complexSearch?query=#{query}")
   end
 end

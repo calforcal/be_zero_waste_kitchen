@@ -2,6 +2,7 @@ class SpoonSearch
   def initialize(options = {})
     @ingredients = options[:ingredients]
     @api_id = options[:api_id]
+    @name = options[:name]
   end
 
   def spoon_service
@@ -45,8 +46,13 @@ class SpoonSearch
     saved_recipe
   end
 
-  def recipe_by_name
-    recipes = spoon_service
+  def name_search
+    recipes = spoon_service.recipes_by_name(@name)
+    recipes_found = recipes[:results].map do |recipe|
+      Recipe.create!(name: recipe[:title],
+                    api_id: recipe[:id].to_s,
+                    image_url: recipe[:image])
+    end
   end
 
   def ingredient_search_details

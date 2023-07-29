@@ -1,10 +1,10 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe "Users API" do
-  let!(:user_1) { User.create!(uid: "123", name: "Michael C", email: "michael@gmail.com") }
-  let!(:user_2) { User.create!(uid: "456", name: "Carolyn C", email: "carolyn@gmail.com") }
+describe 'Users API' do
+  let!(:user_1) { User.create!(uid: '123', name: 'Michael C', email: 'michael@gmail.com') }
+  let!(:user_2) { User.create!(uid: '456', name: 'Carolyn C', email: 'carolyn@gmail.com') }
 
-  let!(:recipe_1) { Recipe.create!(name: 'Chicken Parm', instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', api_rating: 99.99, cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}") }
+  let!(:recipe_1) { Recipe.create!(name: 'Chicken Parm', instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}") }
   let!(:chicken) { Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs') }
   let!(:cheese) { Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs') }
   let!(:recipe_ingredients_1) { recipe_1.recipe_ingredients.create!(ingredient_id: chicken.id) }
@@ -15,9 +15,9 @@ describe "Users API" do
   let!(:saved_ingredient_1) { user_1.saved_ingredients.create!(ingredient_name: chicken.name, unit_type: chicken.unit_type, units: chicken.units)}
   let!(:saved_ingredient_2) { user_1.saved_ingredients.create!(ingredient_name: cheese.name, unit_type: cheese.unit_type, units: cheese.units)}
 
-  describe "Fetch One Merchant" do
-    describe "happy paths" do
-      it "can get one merchant", :vcr do
+  describe 'Fetch One Merchant' do
+    describe 'happy paths' do
+      it 'can get one merchant', :vcr do
         get api_v1_user_path(user_1)
 
         expect(response).to be_successful
@@ -144,8 +144,8 @@ describe "Users API" do
           email: "busta@gmail.com"
         })
 
-        headers = {"CONTENT_TYPE" => "application/json"}
-        post api_v1_users_path, headers: headers, params: JSON.generate(user: user_params)
+        headers = { 'CONTENT_TYPE' => 'application/json' }
+        post api_v1_users_path, headers:, params: JSON.generate(user: user_params)
         created_user = User.last
 
         expect(created_user.uid).to eq(user_params[:uid])

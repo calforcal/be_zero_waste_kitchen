@@ -1,12 +1,11 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
-require "spec_helper"
+require 'spec_helper'
 
 require 'simplecov'
 SimpleCov.start
 
-
 ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment.rb'
+require_relative '../config/environment'
 # Prevent database truncation if the environment is production
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
@@ -79,5 +78,7 @@ VCR.configure do |config|
   config.hook_into :webmock
   config.filter_sensitive_data('X-Api-Key') { ENV['NUTRITION_API_KEY'] }
   config.filter_sensitive_data('Authorization') { ENV['EMISSIONS_API_KEY'] }
+  config.filter_sensitive_data('apiKey') { ENV['SPOON-KEY'] }
+  config.default_cassette_options = { re_record_interval: 30.days }
   config.configure_rspec_metadata!
 end

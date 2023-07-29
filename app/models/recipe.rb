@@ -10,7 +10,8 @@ class Recipe < ApplicationRecord
     where("name ILIKE ?", "%#{name}%")
   end
 
-  def ingredient_search_details
-
+  def self.ingredient_search_details(ingredients)
+    require 'pry'; binding.pry
+    joins(:ingredients).where(:ingredients => {:name => ["pasta","sauce"] })
   end
 end

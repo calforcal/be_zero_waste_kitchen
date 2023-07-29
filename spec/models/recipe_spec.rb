@@ -30,8 +30,16 @@ RSpec.describe Recipe, type: :model do
       @recipe3.ingredients.create!(name: "sauce", units: 1, unit_type: "jar")
 
     end
+
     it "#find_name" do 
       expect(Recipe.find_name("spaghettI")).to eq([@recipe1])
+      expect(Recipe.find_name("nachO")).to eq([@recipe2])
+      expect(Recipe.find_name("priMavera")).to eq([@recipe3])
+    end
+
+    it "#ingredient_search_details" do 
+      
+      expect(Recipe.ingredient_search_details(["sauce"])).to match_array([@recipe1, @recipe3])
     end
   end
 end

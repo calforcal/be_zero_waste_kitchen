@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe RecipeSearch do
+RSpec.describe SpoonSearch do
   describe 'instance methods' do
     it 'will add recipes to cache', :vcr do
       expect(Recipe.all.count).to eq(0)
       expect(Ingredient.all.count).to eq(0)
       expect(RecipeIngredient.all.count).to eq(0)
       query = %w[potatoes onions]
-      recipes = RecipeSearch.new(ingredients: query).ingredient_search
+      recipes = SpoonSearch.new(ingredients: query).ingredient_search
 
       expect(Recipe.all.count).to_not eq(0)
       expect(Ingredient.all.count).to_not eq(0)
@@ -23,7 +23,7 @@ RSpec.describe RecipeSearch do
     it 'will add detailed data to a recipe', :vcr do
       recipe = Recipe.create!(name: 'Beans', api_id: '1099404', image_url: 'sweeturl', user_submitted: false)
 
-      RecipeSearch.new(api_id: recipe.api_id).recipe_by_id
+      SpoonSearch.new(api_id: recipe.api_id).recipe_by_id
 
       recipe.reload
 
@@ -39,7 +39,7 @@ RSpec.describe RecipeSearch do
       expect(RecipeIngredient.all.count).to eq(0)
 
       query = %w[potatoes onions]
-      recipes = RecipeSearch.new(ingredients: query).ingredient_search_details
+      recipes = SpoonSearch.new(ingredients: query).ingredient_search_details
 
       expect(Recipe.all.count).to_not eq(0)
       expect(Ingredient.all.count).to_not eq(0)

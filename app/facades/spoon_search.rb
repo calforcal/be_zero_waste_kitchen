@@ -1,4 +1,4 @@
-class RecipeSearch
+class SpoonSearch
   def initialize(options = {})
     @ingredients = options[:ingredients]
     @api_id = options[:api_id]
@@ -18,12 +18,12 @@ class RecipeSearch
                                       user_submitted: false)
       recipe[:usedIngredients].map do |ingredient|
         recipe_created.ingredients.create!(name: ingredient[:name],
-                                           unit_type: ingredient[:unitShort],
-                                           units: ingredient[:amount])
+                                          unit_type: ingredient[:unitShort],
+                                          units: ingredient[:amount])
         recipe[:missedIngredients].map do |ingredient|
           recipe_created.ingredients.create!(name: ingredient[:name],
-                                             unit_type: ingredient[:unitShort],
-                                             units: ingredient[:amount])
+                                            unit_type: ingredient[:unitShort],
+                                            units: ingredient[:amount])
         end
       end
       recipes_created << recipe_created

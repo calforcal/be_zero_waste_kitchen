@@ -18,4 +18,10 @@ class SpoonacularService
   def recipe_by_id(id)
     get_url("#{id.to_i}/information")
   end
+
+  def recipes_by_name(name)
+    search = name.split(" ")
+    query = search.join(",+")
+    stuff = get_url("complexSearch?query=#{query}")
+  end
 end

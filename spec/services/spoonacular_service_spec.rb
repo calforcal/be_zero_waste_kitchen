@@ -18,6 +18,21 @@ RSpec.describe SpoonacularService do
         expect(recipe[:usedIngredients].first).to have_key(:amount)
         expect(recipe[:usedIngredients].first).to have_key(:unitShort)
       end
+      it "gets a list of recipes from a basic query/name" do 
+        VCR.use_cassette("name") do 
+          query = "bruschetta stuffed"
+          search = SpoonacularService.new.recipes_by_name(query)
+          
+          expect(search[:results]).to be_an(Array)
+
+          recipe = search[:results].first
+
+          expect(recipe[:title]).to be_a(String)
+          expect(recipe[:id]).to be_an(Integer)
+          expect(recipe[:image]).to be_a(String)
+          expect(search[:totalResults]).to be_an(Integer)
+        end
+      end
     end
   end
 end

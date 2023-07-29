@@ -45,6 +45,10 @@ class SpoonSearch
     saved_recipe
   end
 
+  def recipe_by_name
+    recipes = spoon_service
+  end
+
   def ingredient_search_details
     recipes = ingredient_search
     recipes.map do |recipe|

@@ -38,8 +38,10 @@ RSpec.describe User, type: :model do
     let!(:saved_ingredient_4) { user_1.saved_ingredients.create!(ingredient_name: eggs.name, unit_type: eggs.unit_type, units: eggs.units)}
 
     describe '#emissions_reduction' do
-      it 'can return the total value of emissions reduced from saved ingredients', :vcr do
-        expect(user_1.emissions_reduction).to eq(14.136868307551117)
+      it 'can return the total value of emissions reduced from saved ingredients' do
+        VCR.use_cassette("spec/fixtures/vcr_cassettes/User/instance_methods/_emissions_reduction/can_return_the_total_value_of_emissions_reduced_from_saved_ingredients.yml") do
+          expect(user_1.emissions_reduction).to eq(14.136868307551117)
+        end
       end
     end
 
@@ -62,12 +64,14 @@ RSpec.describe User, type: :model do
     end
 
     describe '#user_stats' do
-      it 'can return a condensed version of all user stats', :vcr do
-        expect(user_1.user_stats).to eq({
-          recipes_created: 1,
-          recipes_cooked: 1,
-          kg_emissions_saved: 14.14
-        })
+      it 'can return a condensed version of all user stats' do
+        VCR.use_cassette("spec/fixtures/vcr_cassettes/User/instance_methods/_user_stats/can_return_a_condensed_version_of_all_user_stats.yml") do
+          expect(user_1.user_stats).to eq({
+            recipes_created: 1,
+            recipes_cooked: 1,
+            kg_emissions_saved: 14.14
+          })
+        end
       end
     end
 
@@ -76,7 +80,6 @@ RSpec.describe User, type: :model do
         expect(Recipe.all.count).to eq(3)
         expect(user_1.recipes.count).to eq(2)
         
-        # expect(user_1.recipes_cooked.count).to eq(1)
         expect(user_1.recipes_cooked.first.id).to eq(recipe_2.id)
         expect(user_1.recipes_cooked.first.name).to eq(recipe_2.name)
       end
@@ -87,7 +90,6 @@ RSpec.describe User, type: :model do
         expect(Recipe.all.count).to eq(3)
         expect(user_1.recipes.count).to eq(2)
 
-        # expect(user_1.recipes_created.count).to eq(1)
         expect(user_1.recipes_created.first.id).to eq(recipe_1.id)
         expect(user_1.recipes_created.first.name).to eq(recipe_1.name)
       end

@@ -11,22 +11,25 @@ class RecipeSearch
 
   def ingredient_search
     recipes = spoon_service.recipes_by_ingredients(@ingredients)
-    recipes.each do |recipe|
+    recipes_created = []
+    recipes.map do |recipe|
       recipe_created = Recipe.create!(name: recipe[:title], 
-        api_id: recipe[:id], 
-        image_url: recipe[:image], 
-        user_submitted: false)
+                                      api_id: recipe[:id], 
+                                      image_url: recipe[:image], 
+                                      user_submitted: false)
       recipe[:usedIngredients].map do |ingredient|
-      recipe_created.ingredients.create!(name: ingredient[:name],
-                                                unit_type: ingredient[:unitShort],
-                                                units: ingredient[:amount])
-        recipe[:missedIngredients].map do |ingredient|
         recipe_created.ingredients.create!(name: ingredient[:name],
-                                                  unit_type: ingredient[:unitShort],
-                                                  units: ingredient[:amount])
+                                          unit_type: ingredient[:unitShort],
+                                          units: ingredient[:amount])
+        recipe[:missedIngredients].map do |ingredient|
+          recipe_created.ingredients.create!(name: ingredient[:name],
+                                            unit_type: ingredient[:unitShort],
+                                            units: ingredient[:amount])
         end
       end
+      recipes_created << recipe_created
     end
+    recipes_created
   end
 
   def recipe_by_id
@@ -40,5 +43,14 @@ class RecipeSearch
                         cook_time: recipe[:readyInMinutes],
                         source_name: recipe[:sourceName], 
                         source_url: recipe[:sourceUrl])
+    saved_recipe
+  end
+
+  def ingredient_search_details
+    recipes = ingredient_search
+    recipes.map do |recipe|
+      @api_id = recipe.api_id
+      recipe_by_id
+    end
   end
 end

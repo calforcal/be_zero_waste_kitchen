@@ -5,8 +5,6 @@ class Recipe < ApplicationRecord
   has_many :users, through: :user_recipes
   validates :name, presence: true
   validates :api_id, uniqueness: true
-  # validates :instructions, presence: true
-  # validates :cook_time, presence: true, numericality: true
   validates :public_status, presence: true
 
   

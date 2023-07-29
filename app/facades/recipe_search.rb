@@ -33,10 +33,9 @@ class RecipeSearch
     recipe = spoon_service.recipe_by_id(@api_id)
     saved_recipe = Recipe.find_by(api_id: @api_id)
     instructions = []
-    recipe[:analyzedInstructions]&[:steps].each do |step|
-      instructions << step&[:step]
+    recipe[:analyzedInstructions].first[:steps].each do |step|
+      if step then instructions << step[:step] else  end
     end
-    require 'pry'; binding.pry
     saved_recipe.update(instructions: instructions.flatten,
                         cook_time: recipe[:readyInMinutes],
                         source_name: recipe[:sourceName], 

@@ -25,6 +25,8 @@ RSpec.describe RecipeSearch do
 
       RecipeSearch.new(api_id: recipe.api_id).recipe_by_id
 
+      recipe.reload
+      
       expect(recipe.instructions).to be_an(Array)
       expect(recipe.cook_time).to be_an(Integer)
       expect(recipe.source_name).to be_a(String)

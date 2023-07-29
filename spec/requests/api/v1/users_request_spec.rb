@@ -4,9 +4,20 @@ describe "Users API" do
   let!(:user_1) { User.create!(uid: "123", name: "Michael C", email: "michael@gmail.com") }
   let!(:user_2) { User.create!(uid: "456", name: "Carolyn C", email: "carolyn@gmail.com") }
 
+  let!(:recipe_1) { Recipe.create!(name: 'Chicken Parm', instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', api_rating: 99.99, cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}") }
+  let!(:chicken) { Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs') }
+  let!(:cheese) { Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs') }
+  let!(:recipe_ingredients_1) { recipe_1.recipe_ingredients.create!(ingredient_id: chicken.id) }
+  let!(:recipe_ingredients_2) { recipe_1.recipe_ingredients.create!(ingredient_id: cheese.id) }
+
+  let!(:user_recipe_1) { user_1.user_recipes.create!(recipe_id: recipe_1.id, num_stars: 4, cook_status: false, saved_status: true, is_owner: true) }
+
+  let!(:saved_ingredient_1) { user_1.saved_ingredients.create!(ingredient_name: chicken.name, unit_type: chicken.unit_type, units: chicken.units)}
+  let!(:saved_ingredient_2) { user_1.saved_ingredients.create!(ingredient_name: cheese.name, unit_type: cheese.unit_type, units: cheese.units)}
+
   describe "Fetch One Merchant" do
     describe "happy paths" do
-      it "can get one merchant" do
+      it "can get one merchant", :vcr do
         get api_v1_user_path(user_1)
 
         expect(response).to be_successful
@@ -26,13 +37,107 @@ describe "Users API" do
 
         expect(user[:attributes]).to have_key(:email)
         expect(user[:attributes][:email]).to be_a(String)
+
+        expect(user[:attributes]).to have_key(:stats)
+        expect(user[:attributes][:stats]).to be_a Hash
+
+        stats = user[:attributes][:stats]
+
+        expect(stats).to have_key(:recipes_created)
+        expect(stats[:recipes_created]).to be_an Integer
+
+        expect(stats).to have_key(:recipes_cooked)
+        expect(stats[:recipes_cooked]).to be_an Integer
+
+        expect(stats).to have_key(:kg_emissions_saved)
+        expect(stats[:kg_emissions_saved]).to be_an Float
+      end
+
+      it 'can get one merchants cooked recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_cooked_recipes = user[:attributes]
+
+        expect(user_cooked_recipes).to have_key(:cooked_recipes)
+        expect(user_cooked_recipes[:cooked_recipes]).to be_an Array
+        expect(user_cooked_recipes[:cooked_recipes].first).to be_an Hash
+
+        first_recipe = user_cooked_recipes[:cooked_recipes].first
+
+        expect(first_recipe).to have_key[:id]
+        expect(first_recipe[:id]).to be_a Integer
+
+        expect(first_recipe).to have_key[:name]
+        expect(first_recipe[:name]).to be_a String
+
+        expect(first_recipe).to have_key[:api_id]
+        expect(first_recipe[:api_id]).to be_a Integer
+      end
+
+      it 'can get one merchants created recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_created_recipes = user[:attributes]
+
+        expect(user_created_recipes).to have_key(:created_recipes)
+        expect(user_created_recipes[:created_recipes]).to be_an Array
+        expect(user_created_recipes[:created_recipes].first).to be_an Hash
+
+        first_recipe = user_created_recipes[:created_recipes].first
+
+        expect(first_recipe).to have_key[:id]
+        expect(first_recipe[:id]).to be_a Integer
+
+        expect(first_recipe).to have_key[:name]
+        expect(first_recipe[:name]).to be_a String
+
+        expect(first_recipe).to have_key[:api_id]
+        expect(first_recipe[:api_id]).to be_a Integer
+      end
+
+      it 'can get the Number of one merchants cooked recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_cooked_recipes = user[:attributes]
+
+        expect(user_cooked_recipes).to have_key(:num_cooked_recipes)
+        expect(user_cooked_recipes[:num_cooked_recipes]).to be_an Integer
+      end
+
+      it 'can get the Number of one merchants created recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_created_recipes = user[:attributes]
+
+        expect(user_created_recipes).to have_key(:num_created_recipes)
+        expect(user_created_recipes[:num_created_recipes]).to be_an Integer
       end
     end
   end
 
   describe "Create One Merchant" do
     describe "happy paths" do
-      it "can create one merchant" do
+      it "can create one merchant", :vcr do
         user_params = ({
           uid: "000",
           name: "Busta Rhymes",

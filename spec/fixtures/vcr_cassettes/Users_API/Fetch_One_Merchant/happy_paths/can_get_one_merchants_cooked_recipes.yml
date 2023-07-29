@@ -29,7 +29,7 @@ http_interactions:
       Date:
       - Sat, 29 Jul 2023 18:19:14 GMT
       X-Amzn-Requestid:
-      - d3f8283e-addf-48ab-abfa-e9c282ab2841
+      - cbb30d6d-1508-4f8a-91dc-f06d87dacf31
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -37,19 +37,19 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I1q1XF0hvHcF2Mw=
+      - I1q1dHSAvHcFj_A=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c55822-0ebd203f03e9822251de5014;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c55822-3d5f8f4c7318e09e2d473de2;Sampled=0;lineage=6ae1048e:0
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 96b078df4a5d96ad3cc52cfe9d984774.cloudfront.net (CloudFront)
+      - 1.1 f351054a0917e7cc21ba99141c9ae602.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - J7iaKGLc8ZYaNEBpz8OlahXkdg6T2naYKpeBvrpoN1i9ToTRsS115g==
+      - xw2Zqe2eemhtLBkVLKvrLCKnG0CKsisnXSkzKkJLwxc7cYTu8rh6Vw==
     body:
       encoding: UTF-8
       string: '[{"name": "chicken", "calories": 3784.9, "serving_size_g": 1700.0,
@@ -106,9 +106,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=3600
       X-Served-By:
-      - cache-den8254-DEN
+      - cache-den8239-DEN
       Date:
-      - Sat, 29 Jul 2023 18:19:13 GMT
+      - Sat, 29 Jul 2023 18:19:14 GMT
     body:
       encoding: UTF-8
       string: '{"co2e":14.136868307551117,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food

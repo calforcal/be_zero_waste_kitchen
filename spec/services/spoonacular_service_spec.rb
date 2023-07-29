@@ -4,22 +4,25 @@ RSpec.describe SpoonacularService do
   describe 'instance methods' do
     describe '#recipes_by_ingredients' do
       it 'gets all recipes based on list of ingredients', :vcr do
-        query = ['salt, potatoes']
-        search = SpoonacularService.new.recipes_by_ingredients(query)
+        VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients.yml") do 
+          query = ['salt, potatoes']
+          search = SpoonacularService.new.recipes_by_ingredients(query)
 
-        expect(search).to be_an(Array)
+          expect(search).to be_an(Array)
 
-        recipe = search.first
+          recipe = search.first
 
-        expect(recipe).to have_key(:usedIngredientCount)
-        expect(recipe).to have_key(:usedIngredients)
-        expect(recipe[:usedIngredients]).to be_an(Array)
-        expect(recipe[:usedIngredients].first).to have_key(:name)
-        expect(recipe[:usedIngredients].first).to have_key(:amount)
-        expect(recipe[:usedIngredients].first).to have_key(:unitShort)
+          expect(recipe).to have_key(:usedIngredientCount)
+          expect(recipe).to have_key(:usedIngredients)
+          expect(recipe[:usedIngredients]).to be_an(Array)
+          expect(recipe[:usedIngredients].first).to have_key(:name)
+          expect(recipe[:usedIngredients].first).to have_key(:amount)
+          expect(recipe[:usedIngredients].first).to have_key(:unitShort)
+        end
       end
-      it "gets a list of recipes from a basic query/name" do 
-        VCR.use_cassette("name") do 
+
+      it "gets a list of recipes from a basic query/name", :vcr do 
+        VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonacularService/instance_methods/_recipes_by_ingredients/gets_a_list_of_recipes_from_a_basic_query/name.yml") do 
           query = "bruschetta stuffed"
           search = SpoonacularService.new.recipes_by_name(query)
           

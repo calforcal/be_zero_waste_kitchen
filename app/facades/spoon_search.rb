@@ -62,4 +62,12 @@ class SpoonSearch
       recipe_by_id
     end
   end
+
+  def name_search_details
+    recipes = name_search
+    recipes.map do |recipe|
+      @api_id = recipe.api_id
+      recipe_by_id
+    end
+  end
 end

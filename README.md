@@ -12,15 +12,38 @@
     "id": "integer",
     "type": "string",
     "attributes": {
-      "first_name": "string",
-      "last_name": "string",
-      "username": "string",
+      "uid": "string",
+      "name": "string",
       "email": "string",
       "stats": {
         "lions_saved": "integer",
         "recipes_cooked": "integer",
         "recipes_created": "integer"
-      }
+      },
+      "cooked_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ],
+      "created_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ],
+      "saved_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ],
+      "num_cooked_recipes": "integer",
+      "num_created_recipes": "integer",
+      "num_saved_recipes": "integer"
     }
   }
 }
@@ -33,27 +56,27 @@
 
 ```
 {
-  "first_name": "string",
-  "last_name": "string",
-  "username": "string",
-  "email": "string",
-  "password": "string",
-  "password_confirmation": "string"
+  "uid": "string",
+  "name": "string",
+  "email": "string"
 }
 ```
 
 ### Create a Recipe
 <p> POST ‘/api/v1/user/:user_id/recipes’ </p>
-<p> Example of the body details to be provided when creating a cooked recipe </p>
+<p> Example of the body details to be provided when creating a recipe </p>
 
 ```
 {
-  "user_id": "integer",
-  "recipe_id": "integer",
-  "instructions": "string",
+  "name": "string",
+  "instructions": "array",
   "image_url": "string",
-  "cook_time": "integer",
-  "public_status": "boolean"
+  "cook_time": "string",
+  "public_status": "boolean",
+  "source_name": "string",
+  "source_url": "string",
+  "user_submitted": "boolean",
+  "api_id": "string"
 }
 ```
 
@@ -65,6 +88,7 @@
 {
   "user_id": "integer",
   "recipe_id": "integer",
+  "api_id": "string",
   "cook_status": "boolean"
 }
 ```
@@ -77,6 +101,7 @@
 {
   "user_id": "integer",
   "recipe_id": "integer",
+  "api_id": "string",
   "saved_status": "boolean"
 }
 ```
@@ -89,6 +114,7 @@
 {
   "user_id": "integer",
   "recipe_id": "integer",
+  "api_id": "string",
   "cook_status": "boolean",
   "num_stars": "integer"
 }
@@ -102,89 +128,9 @@
 {
   "id": "integer",
   "name": "string",
-  "username": "string",
   "email": "string"
 }
 ```
-
-### Fetch One Users Cooked Recipes
-<p>GET '/api/v1/users/:id/recipes?value=cooked'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=cooked</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
-### Fetch One Users Created Recipes
-<p>GET '/api/v1/users/:id/recipes?value=created'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=created</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
-### Fetch One Users Saved Recipes
-<p>GET '/api/v1/users/:id/recipes?value=saved'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=saved</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
 
 ### Fetch One Saved Recipes
 <p>GET '/api/v1/recipes/:id'</p>
@@ -258,6 +204,7 @@
       "name": "string",
       "username": "string"
     },
+  },
   {
     "id": "string",
     "type": "string",
@@ -265,7 +212,7 @@
       "name": "string",
       "username": "string"
     }
-  }
+  }]
 }
 ```
 

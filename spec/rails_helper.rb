@@ -81,6 +81,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('Authorization') { ENV['EMISSIONS_API_KEY'] }
   config.filter_sensitive_data('apiKey') { ENV['SPOON-KEY'] }
   config.default_cassette_options = { re_record_interval: 30.days }
-  # config.allow_http_connections_when_no_cassette = true
   config.configure_rspec_metadata!
+  config.allow_http_connections_when_no_cassette = true
 end

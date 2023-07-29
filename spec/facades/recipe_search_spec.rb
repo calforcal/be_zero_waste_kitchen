@@ -20,11 +20,11 @@ RSpec.describe SpoonSearch do
       expect(Ingredient.first.units).to be_a(Float)
     end
 
-    it 'will add detailed data to a recipe' do
+    it 'will add detailed data to a recipe', :vcr do
       recipe = Recipe.create!(name: 'Beans', api_id: '1099404', image_url: 'sweeturl', user_submitted: false)
-      VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe_yml.yml") do
-        SpoonSearch.new(api_id: recipe.api_id).recipe_by_id
-      end
+      SpoonSearch.new(api_id: recipe.api_id).recipe_by_id
+      # VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe_yml.yml") do
+      # end
 
       recipe.reload
 

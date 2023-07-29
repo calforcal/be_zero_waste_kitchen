@@ -1,12 +1,12 @@
-require "rails_helper" 
+require 'rails_helper'
 
-RSpec.describe RecipeSearch do 
-  describe "instance methods" do 
-    it "will add recipes to cache", :vcr do 
+RSpec.describe RecipeSearch do
+  describe 'instance methods' do
+    it 'will add recipes to cache', :vcr do
       expect(Recipe.all.count).to eq(0)
       expect(Ingredient.all.count).to eq(0)
       expect(RecipeIngredient.all.count).to eq(0)
-      query = ["potatoes", "onions"]
+      query = %w[potatoes onions]
       recipes = RecipeSearch.new(ingredients: query).ingredient_search
 
       expect(Recipe.all.count).to_not eq(0)
@@ -20,8 +20,8 @@ RSpec.describe RecipeSearch do
       expect(Ingredient.first.units).to be_a(Float)
     end
 
-    it "will add detailed data to a recipe", :vcr do 
-      recipe = Recipe.create!(name: "Beans", api_id: "1099404", image_url: "sweeturl", user_submitted: false)
+    it 'will add detailed data to a recipe', :vcr do
+      recipe = Recipe.create!(name: 'Beans', api_id: '1099404', image_url: 'sweeturl', user_submitted: false)
 
       RecipeSearch.new(api_id: recipe.api_id).recipe_by_id
 
@@ -33,12 +33,12 @@ RSpec.describe RecipeSearch do
       expect(recipe.source_url).to be_a(String)
     end
 
-    it "will search by ingredients with detailed information", :vcr do 
+    it 'will search by ingredients with detailed information', :vcr do
       expect(Recipe.all.count).to eq(0)
       expect(Ingredient.all.count).to eq(0)
       expect(RecipeIngredient.all.count).to eq(0)
 
-      query = ["potatoes", "onions"]
+      query = %w[potatoes onions]
       recipes = RecipeSearch.new(ingredients: query).ingredient_search_details
 
       expect(Recipe.all.count).to_not eq(0)

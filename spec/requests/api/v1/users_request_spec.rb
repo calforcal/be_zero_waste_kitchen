@@ -1,12 +1,12 @@
-require "rails_helper"
+require 'rails_helper'
 
-describe "Users API" do
-  let!(:user_1) { User.create!(uid: "123", name: "Michael C", email: "michael@gmail.com") }
-  let!(:user_2) { User.create!(uid: "456", name: "Carolyn C", email: "carolyn@gmail.com") }
+describe 'Users API' do
+  let!(:user_1) { User.create!(uid: '123', name: 'Michael C', email: 'michael@gmail.com') }
+  let!(:user_2) { User.create!(uid: '456', name: 'Carolyn C', email: 'carolyn@gmail.com') }
 
-  describe "Fetch One Merchant" do
-    describe "happy paths" do
-      it "can get one merchant" do
+  describe 'Fetch One Merchant' do
+    describe 'happy paths' do
+      it 'can get one merchant' do
         get api_v1_user_path(user_1)
 
         expect(response).to be_successful
@@ -30,18 +30,18 @@ describe "Users API" do
     end
   end
 
-  describe "Create One Merchant" do
-    describe "happy paths" do
-      it "can create one merchant" do
-        user_params = ({
-          uid: "000",
-          name: "Busta Rhymes",
-          email: "busta@gmail.com",
-          token: "A3000"
-        })
+  describe 'Create One Merchant' do
+    describe 'happy paths' do
+      it 'can create one merchant' do
+        user_params = {
+          uid: '000',
+          name: 'Busta Rhymes',
+          email: 'busta@gmail.com',
+          token: 'A3000'
+        }
 
-        headers = {"CONTENT_TYPE" => "application/json"}
-        post api_v1_users_path, headers: headers, params: JSON.generate(user: user_params)
+        headers = { 'CONTENT_TYPE' => 'application/json' }
+        post api_v1_users_path, headers:, params: JSON.generate(user: user_params)
         created_user = User.last
 
         expect(created_user.uid).to eq(user_params[:uid])

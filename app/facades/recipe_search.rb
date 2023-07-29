@@ -1,11 +1,10 @@
 class RecipeSearch
-
   def initialize(options = {})
     @ingredients = options[:ingredients]
     @api_id = options[:api_id]
   end
-  
-  def spoon_service 
+
+  def spoon_service
     SpoonacularService.new
   end
 
@@ -13,18 +12,18 @@ class RecipeSearch
     recipes = spoon_service.recipes_by_ingredients(@ingredients)
     recipes_created = []
     recipes.map do |recipe|
-      recipe_created = Recipe.create!(name: recipe[:title], 
-                                      api_id: recipe[:id], 
-                                      image_url: recipe[:image], 
+      recipe_created = Recipe.create!(name: recipe[:title],
+                                      api_id: recipe[:id],
+                                      image_url: recipe[:image],
                                       user_submitted: false)
       recipe[:usedIngredients].map do |ingredient|
         recipe_created.ingredients.create!(name: ingredient[:name],
-                                          unit_type: ingredient[:unitShort],
-                                          units: ingredient[:amount])
+                                           unit_type: ingredient[:unitShort],
+                                           units: ingredient[:amount])
         recipe[:missedIngredients].map do |ingredient|
           recipe_created.ingredients.create!(name: ingredient[:name],
-                                            unit_type: ingredient[:unitShort],
-                                            units: ingredient[:amount])
+                                             unit_type: ingredient[:unitShort],
+                                             units: ingredient[:amount])
         end
       end
       recipes_created << recipe_created
@@ -37,11 +36,11 @@ class RecipeSearch
     saved_recipe = Recipe.find_by(api_id: @api_id)
     instructions = []
     recipe[:analyzedInstructions].first[:steps].each do |step|
-      if step then instructions << step[:step] else  end
+      instructions << step[:step] if step
     end
     saved_recipe.update(instructions: instructions.flatten,
                         cook_time: recipe[:readyInMinutes],
-                        source_name: recipe[:sourceName], 
+                        source_name: recipe[:sourceName],
                         source_url: recipe[:sourceUrl])
     saved_recipe
   end

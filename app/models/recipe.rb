@@ -6,6 +6,4 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :api_id, uniqueness: true
   validates :public_status, presence: true
-
-  
 end

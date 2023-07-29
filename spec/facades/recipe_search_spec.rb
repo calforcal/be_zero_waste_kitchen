@@ -26,12 +26,13 @@ RSpec.describe SpoonSearch do
       # VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe_yml.yml") do
       # end
 
-      recipe.reload
+        recipe.reload
 
-      expect(recipe.instructions).to be_an(Array)
-      expect(recipe.cook_time).to be_an(Integer)
-      expect(recipe.source_name).to be_a(String)
-      expect(recipe.source_url).to be_a(String)
+        expect(recipe.instructions).to be_an(Array)
+        expect(recipe.cook_time).to be_an(Integer)
+        expect(recipe.source_name).to be_a(String)
+        expect(recipe.source_url).to be_a(String)
+      end
     end
 
     it 'will search by ingredients with detailed information', :vcr do

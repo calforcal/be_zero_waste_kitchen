@@ -16,19 +16,19 @@ class User < ApplicationRecord
   end
 
   def recipes_cooked
-    recipes.where("user_recipes.cook_status = ?", "true")
+    recipes.select("recipes.name, recipes.api_id, recipes.id").where("user_recipes.cook_status = ?", "true")
   end
 
   def recipes_created
-    recipes.where("user_recipes.is_owner = ?", "true")
+    recipes.select("recipes.name, recipes.api_id, recipes.id").where("user_recipes.is_owner = ?", "true")
   end
 
   def num_recipes_cooked
-    recipes.where("user_recipes.cook_status = ?", "true").count
+    recipes_cooked.count
   end
 
   def num_recipes_created
-    recipes.where("user_recipes.is_owner = ?", "true").count
+    recipes_created.count
   end
 
   def emissions_reduction

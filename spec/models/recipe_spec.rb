@@ -15,13 +15,23 @@ RSpec.describe Recipe, type: :model do
 
   describe "class methods" do
     before(:each) do 
-      recipe1 = Recipe.create!(name: "Spaghetti with Marinara", ingredients: ["spaghetti", "sauce"])
-      recipe2 = Recipe.create!(name: "Vegan Nachos", ingredients: ["chips", "vegan cheese sauce", "salsa"])
-      recipe3 = Recipe.create!(name: "Pasta Primavera", ingredients: ["pasta", "sauce"])
+      @recipe1 = Recipe.create!(name: "Spaghetti with Marinara")
+      @recipe2 = Recipe.create!(name: "Vegan Nachos")
+      @recipe3 = Recipe.create!(name: "Pasta Primavera")
+
+      @recipe1.ingredients.create!(name: "spaghetti", units: 1, unit_type: "box")
+      @recipe1.ingredients.create!(name: "sauce", units: 1, unit_type: "can")
+
+      @recipe2.ingredients.create!(name: "chips", units: 1, unit_type: "bag")
+      @recipe2.ingredients.create!(name: "vegan cheese sauce", units: 1, unit_type: "cup")
+      @recipe2.ingredients.create!(name: "salsa", units: 1, unit_type: "jar")
+
+      @recipe3.ingredients.create!(name: "pasta", units: 1, unit_type: "box")
+      @recipe3.ingredients.create!(name: "sauce", units: 1, unit_type: "jar")
 
     end
     it "#find_name" do 
-      expect(Recipe.find_name("spaghettI")).to match_array()
+      expect(Recipe.find_name("spaghettI")).to eq([@recipe1])
     end
   end
 end

@@ -7,8 +7,6 @@ http_interactions:
       encoding: UTF-8
       string: '{"emission_factor":{"activity_id":"waste_type_food_waste-disposal_method_landfilled","source":"EPA","region":"US","year":2022,"source_lca_activity":"end_of_life","data_version":"2.2"},"parameters":{"weight":4000,"weight_unit":"g"}}'
     headers:
-      Authorization:
-      - Authorization
       'Content-Type: ':
       - application/json
       User-Agent:
@@ -19,15 +17,13 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
     headers:
       Connection:
       - keep-alive
       Content-Length:
-      - '687'
-      Content-Type:
-      - application/json
+      - '96'
       Access-Control-Allow-Origin:
       - "*"
       Cache-Control:
@@ -38,16 +34,15 @@ http_interactions:
       - frame-ancestors 'none'
       Strict-Transport-Security:
       - max-age=3600
+      Content-Type:
+      - application/json
       X-Served-By:
-      - cache-den8239-DEN
+      - cache-den8270-DEN
       Date:
-      - Sat, 29 Jul 2023 21:00:32 GMT
+      - Sat, 29 Jul 2023 22:13:57 GMT
     body:
       encoding: UTF-8
-      string: '{"co2e":2.55736224134458,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
-        Waste - Landfilled","activity_id":"waste_type_food_waste-disposal_method_landfilled","id":"163972ef-d865-4bbe-ab3b-f8b2465cf825","access_type":"public","source":"EPA","source_dataset":"GHG
-        Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
-        Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":2.55736224134458,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.004409245243697552,"activity_unit":"short
-        ton"},"audit_trail":"selector"}'
-  recorded_at: Sat, 29 Jul 2023 21:00:32 GMT
+      string: '{"error":"unauthorized","error_code":null,"message":"No header named
+        ''Authorization'' was found"}'
+  recorded_at: Sat, 29 Jul 2023 22:13:58 GMT
 recorded_with: VCR 6.2.0

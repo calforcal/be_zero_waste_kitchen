@@ -6,6 +6,7 @@ RSpec.describe SpoonSearch do
       expect(Recipe.all.count).to eq(0)
       expect(Ingredient.all.count).to eq(0)
       expect(RecipeIngredient.all.count).to eq(0)
+
       query = %w[potatoes onions]
       recipes = SpoonSearch.new(ingredients: query).ingredient_search
 
@@ -32,7 +33,6 @@ RSpec.describe SpoonSearch do
         expect(recipe.cook_time).to be_an(Integer)
         expect(recipe.source_name).to be_a(String)
         expect(recipe.source_url).to be_a(String)
-      end
     end
 
     it 'will search by ingredients with detailed information', :vcr do

@@ -26,152 +26,140 @@ describe 'Users API' do
 
   describe 'Fetch One Merchant' do
     describe 'happy paths' do
-      it 'can get one merchant' do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Fetch_One_Merchant/happy_paths/can_get_one_merchant.yml") do
-          get api_v1_user_path(user_1)
+      it 'can get one merchant', :vcr do
+        get api_v1_user_path(user_1)
 
-          expect(response).to be_successful
+        expect(response).to be_successful
 
-          parsed = JSON.parse(response.body, symbolize_names: true)
+        parsed = JSON.parse(response.body, symbolize_names: true)
 
-          user = parsed[:data]
+        user = parsed[:data]
 
-          expect(user).to have_key(:id)
-          expect(user[:id]).to be_a(String)
+        expect(user).to have_key(:id)
+        expect(user[:id]).to be_a(String)
 
-          expect(user[:attributes]).to have_key(:uid)
-          expect(user[:attributes][:uid]).to be_a(String)
+        expect(user[:attributes]).to have_key(:uid)
+        expect(user[:attributes][:uid]).to be_a(String)
 
-          expect(user[:attributes]).to have_key(:name)
-          expect(user[:attributes][:name]).to be_a(String)
+        expect(user[:attributes]).to have_key(:name)
+        expect(user[:attributes][:name]).to be_a(String)
 
-          expect(user[:attributes]).to have_key(:email)
-          expect(user[:attributes][:email]).to be_a(String)
+        expect(user[:attributes]).to have_key(:email)
+        expect(user[:attributes][:email]).to be_a(String)
 
-          expect(user[:attributes]).to have_key(:stats)
-          expect(user[:attributes][:stats]).to be_a Hash
+        expect(user[:attributes]).to have_key(:stats)
+        expect(user[:attributes][:stats]).to be_a Hash
 
-          stats = user[:attributes][:stats]
+        stats = user[:attributes][:stats]
 
-          expect(stats).to have_key(:recipes_created)
-          expect(stats[:recipes_created]).to be_an Integer
+        expect(stats).to have_key(:recipes_created)
+        expect(stats[:recipes_created]).to be_an Integer
 
-          expect(stats).to have_key(:recipes_cooked)
-          expect(stats[:recipes_cooked]).to be_an Integer
+        expect(stats).to have_key(:recipes_cooked)
+        expect(stats[:recipes_cooked]).to be_an Integer
 
-          expect(stats).to have_key(:kg_emissions_saved)
-          expect(stats[:kg_emissions_saved]).to be_an Float
-        end
+        expect(stats).to have_key(:kg_emissions_saved)
+        expect(stats[:kg_emissions_saved]).to be_an Float
       end
 
-      it 'can get one merchants cooked recipes' do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Fetch_One_Merchant/happy_paths/can_get_one_merchants_cooked_recipes.yml") do
-          get api_v1_user_path(user_1)
+      it 'can get one merchants cooked recipes', :vcr do
+        get api_v1_user_path(user_1)
 
-          expect(response).to be_successful
+        expect(response).to be_successful
 
-          parsed = JSON.parse(response.body, symbolize_names: true)
+        parsed = JSON.parse(response.body, symbolize_names: true)
 
-          user = parsed[:data]
-          user_cooked_recipes = user[:attributes]
+        user = parsed[:data]
+        user_cooked_recipes = user[:attributes]
 
-          expect(user_cooked_recipes).to have_key(:cooked_recipes)
-          expect(user_cooked_recipes[:cooked_recipes]).to be_an Array
-          expect(user_cooked_recipes[:cooked_recipes].first).to be_an Hash
+        expect(user_cooked_recipes).to have_key(:cooked_recipes)
+        expect(user_cooked_recipes[:cooked_recipes]).to be_an Array
+        expect(user_cooked_recipes[:cooked_recipes].first).to be_an Hash
 
-          first_recipe = user_cooked_recipes[:cooked_recipes].first
+        first_recipe = user_cooked_recipes[:cooked_recipes].first
 
-          expect(first_recipe).to have_key(:id)
-          expect(first_recipe[:id]).to be_an Integer
+        expect(first_recipe).to have_key(:id)
+        expect(first_recipe[:id]).to be_an Integer
 
-          expect(first_recipe).to have_key(:name)
-          expect(first_recipe[:name]).to be_a String
+        expect(first_recipe).to have_key(:name)
+        expect(first_recipe[:name]).to be_a String
 
-          expect(first_recipe).to have_key(:api_id)
-          expect(first_recipe[:api_id]).to be_a String
-        end
+        expect(first_recipe).to have_key(:api_id)
+        expect(first_recipe[:api_id]).to be_a String
       end
 
-      it 'can get one merchants created recipes' do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Fetch_One_Merchant/happy_paths/can_get_one_merchants_created_recipes.yml") do
-          get api_v1_user_path(user_1)
+      it 'can get one merchants created recipes', :vcr do
+        get api_v1_user_path(user_1)
 
-          expect(response).to be_successful
+        expect(response).to be_successful
 
-          parsed = JSON.parse(response.body, symbolize_names: true)
+        parsed = JSON.parse(response.body, symbolize_names: true)
 
-          user = parsed[:data]
-          user_created_recipes = user[:attributes]
+        user = parsed[:data]
+        user_created_recipes = user[:attributes]
 
-          expect(user_created_recipes).to have_key(:created_recipes)
-          expect(user_created_recipes[:created_recipes]).to be_an Array
-          expect(user_created_recipes[:created_recipes].first).to be_an Hash
+        expect(user_created_recipes).to have_key(:created_recipes)
+        expect(user_created_recipes[:created_recipes]).to be_an Array
+        expect(user_created_recipes[:created_recipes].first).to be_an Hash
 
-          first_recipe = user_created_recipes[:created_recipes].first
+        first_recipe = user_created_recipes[:created_recipes].first
 
-          expect(first_recipe).to have_key(:id)
-          expect(first_recipe[:id]).to be_an Integer
+        expect(first_recipe).to have_key(:id)
+        expect(first_recipe[:id]).to be_an Integer
 
-          expect(first_recipe).to have_key(:name)
-          expect(first_recipe[:name]).to be_a String
+        expect(first_recipe).to have_key(:name)
+        expect(first_recipe[:name]).to be_a String
 
-          expect(first_recipe).to have_key(:api_id)
-          expect(first_recipe[:api_id]).to be_a String
-        end
+        expect(first_recipe).to have_key(:api_id)
+        expect(first_recipe[:api_id]).to be_a String
       end
 
-      it 'can get the Number of one merchants cooked recipes' do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Fetch_One_Merchant/happy_paths/can_get_the_Number_of_one_merchants_cooked_recipes.yml") do
-          get api_v1_user_path(user_1)
+      it 'can get the Number of one merchants cooked recipes', :vcr do
+        get api_v1_user_path(user_1)
 
-          expect(response).to be_successful
+        expect(response).to be_successful
 
-          parsed = JSON.parse(response.body, symbolize_names: true)
+        parsed = JSON.parse(response.body, symbolize_names: true)
 
-          user = parsed[:data]
-          user_cooked_recipes = user[:attributes]
+        user = parsed[:data]
+        user_cooked_recipes = user[:attributes]
 
-          expect(user_cooked_recipes).to have_key(:num_cooked_recipes)
-          expect(user_cooked_recipes[:num_cooked_recipes]).to be_an Integer
-        end
+        expect(user_cooked_recipes).to have_key(:num_cooked_recipes)
+        expect(user_cooked_recipes[:num_cooked_recipes]).to be_an Integer
       end
 
-      it 'can get the Number of one merchants created recipes' do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Fetch_One_Merchant/happy_paths/can_get_the_Number_of_one_merchants_created_recipes.yml") do
-          get api_v1_user_path(user_1)
+      it 'can get the Number of one merchants created recipes', :vcr do
+        get api_v1_user_path(user_1)
 
-          expect(response).to be_successful
+        expect(response).to be_successful
 
-          parsed = JSON.parse(response.body, symbolize_names: true)
+        parsed = JSON.parse(response.body, symbolize_names: true)
 
-          user = parsed[:data]
-          user_created_recipes = user[:attributes]
+        user = parsed[:data]
+        user_created_recipes = user[:attributes]
 
-          expect(user_created_recipes).to have_key(:num_created_recipes)
-          expect(user_created_recipes[:num_created_recipes]).to be_an Integer
-        end
+        expect(user_created_recipes).to have_key(:num_created_recipes)
+        expect(user_created_recipes[:num_created_recipes]).to be_an Integer
       end
     end
   end
 
   describe "Create One Merchant" do
     describe "happy paths" do
-      it "can create one merchant" do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/Users_API/Create_One_Merchant/happy_paths/can_create_one_merchant.yml") do
-          user_params = ({
-            uid: "000",
-            name: "Busta Rhymes",
-            email: "busta@gmail.com"
-          })
+      it "can create one merchant", :vcr do
+        user_params = ({
+          uid: "000",
+          name: "Busta Rhymes",
+          email: "busta@gmail.com"
+        })
 
-          headers = { 'CONTENT_TYPE' => 'application/json' }
-          post api_v1_users_path, headers:, params: JSON.generate(user: user_params)
-          created_user = User.last
+        headers = { 'CONTENT_TYPE' => 'application/json' }
+        post api_v1_users_path, headers:, params: JSON.generate(user: user_params)
+        created_user = User.last
 
-          expect(created_user.uid).to eq(user_params[:uid])
-          expect(created_user.name).to eq(user_params[:name])
-          expect(created_user.email).to eq(user_params[:email])
-        end
+        expect(created_user.uid).to eq(user_params[:uid])
+        expect(created_user.name).to eq(user_params[:name])
+        expect(created_user.email).to eq(user_params[:email])
       end
     end
   end

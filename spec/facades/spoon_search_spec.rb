@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe SpoonSearch do
   describe 'instance methods' do
-    it 'will add recipes to cache', :vcr do
-      VCR.use_cassette("SpoonSearch/instance_methods/will_add_recipes_to_cache.yml", match_requests_on: [:path]) do 
+    it 'will add recipes to cache' do
+      VCR.use_cassette("SpoonSearch/instance_methods/will_add_recipes_to_cache", match_requests_on: [:path]) do 
 
         expect(Recipe.all.count).to eq(0)
         expect(Ingredient.all.count).to eq(0)
@@ -24,8 +24,8 @@ RSpec.describe SpoonSearch do
       end
     end
 
-    it 'will add detailed data to a recipe', :vcr do
-      VCR.use_cassette("SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe.yml", match_requests_on: [:path]) do
+    it 'will add detailed data to a recipe' do
+      VCR.use_cassette("SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe", match_requests_on: [:path]) do
         recipe = Recipe.create!(name: 'Beans', api_id: '1099404', image_url: 'sweeturl', user_submitted: false)
 
         SpoonSearch.new(api_id: recipe.api_id).recipe_by_id
@@ -39,8 +39,8 @@ RSpec.describe SpoonSearch do
       end
     end
 
-    it 'will search by ingredients with detailed information', :vcr do
-      VCR.use_cassette("SpoonSearch/instance_methods/will_search_by_ingredients_with_detailed_information.yml", match_requests_on: [:path]) do
+    it 'will search by ingredients with detailed information' do
+      VCR.use_cassette("SpoonSearch/instance_methods/will_search_by_ingredients_with_detailed_information", match_requests_on: [:path]) do
       
         expect(Recipe.all.count).to eq(0)
         expect(Ingredient.all.count).to eq(0)
@@ -61,8 +61,8 @@ RSpec.describe SpoonSearch do
       end
     end
 
-    it 'will search for recipe results by name', :vcr do
-      VCR.use_cassette('SpoonSearch/instance_methods/will_search_for_recipe_results_by_name.yml', match_requests_on: [:path]) do
+    it 'will search for recipe results by name'  do
+      VCR.use_cassette('SpoonSearch/instance_methods/will_search_for_recipe_results_by_name', match_requests_on: [:path]) do
         expect(Recipe.all.count).to eq(0)
 
         query = 'bruschetta stuffed'

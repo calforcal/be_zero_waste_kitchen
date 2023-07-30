@@ -41,8 +41,9 @@ RSpec.describe RecipeSearch do
         expect(Ingredient.all.count).to eq(2)
         expect(RecipeIngredient.all.count).to eq(2)
   
-        params = {ingredients: 'butter, pasta'}
+        params = {ingredients: "butter,+pasta"}
         search = RecipeSearch.new(params)
+
         search.search
   
         expect(Recipe.all.count > 1).to be(true )
@@ -63,7 +64,7 @@ RSpec.describe RecipeSearch do
 
       expect(RecipeSearch.new(params).search.count).to eq(12)
       
-      params = {ingredients: ["garlic", "tofu"]}
+      params = {ingredients: "garlic,+tofu"}
       
       expect(RecipeSearch.new(params).search.count).to eq(12)
     end

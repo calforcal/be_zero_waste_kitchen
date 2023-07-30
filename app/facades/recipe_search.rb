@@ -3,11 +3,10 @@ class RecipeSearch
               :ingredients
   def initialize(params = {})
     @name = params[:name]
-    @ingredients = params[:ingredients].split(", ")
+    @ingredients = params[:ingredients]&.split(", ")&.flatten
   end
 
   def search
-    require 'pry'; binding.pry
     if @name
       recipes = Recipe.find_name(@name)
       if recipes.count >= 10

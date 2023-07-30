@@ -3,7 +3,7 @@ class RecipeSearch
               :ingredients
   def initialize(params = {})
     @name = params[:name]
-    @ingredients = params[:ingredients]&.split(", ")&.flatten
+    @ingredients = params[:ingredients]
   end
 
   def search

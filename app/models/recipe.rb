@@ -18,13 +18,4 @@ class Recipe < ApplicationRecord
       GROUP BY recipes.id
       ORDER BY COUNT(1) DESC", ingredients])
   end
-
 end
-
-# def self.ingredient_search_details(ingredients)
-#   select('recipes.id, recipes.name, recipes.api_id')
-#     .joins(:ingredients)
-#     .where('ingredients.name ILIKE ANY(ARRAY[?])', ingredients)
-#     .group('recipes.id')
-#     .order('COUNT(1) DESC')
-# end

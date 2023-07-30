@@ -12,8 +12,8 @@ class SpoonacularService
   end
 
   def recipes_by_ingredients(ingr_array)
-    search = ingr_array.join(',+')
-    get_url("findByIngredients?ingredients=#{search}")
+    ingr_array.gsub!(', ', ',+')
+    get_url("findByIngredients?ingredients=#{ingr_array}")
   end
 
   def recipe_by_id(id)

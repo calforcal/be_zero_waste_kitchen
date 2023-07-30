@@ -2,11 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.api-ninjas.com/v1/nutrition?query=2.0%20Chicken%20lbs%200.5%20Cheese%20lbs%202.0%20ground%20beef%20lbs%202.0%20eggs%20oz%20
+    uri: https://api.api-ninjas.com/v1/nutrition?query=2%20lbs%20chicken
     body:
       encoding: US-ASCII
       string: ''
     headers:
+      X-Api-Key:
+      - X-Api-Key
       User-Agent:
       - Faraday v2.7.10
       Accept-Encoding:
@@ -15,19 +17,19 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '29'
+      - '260'
       Connection:
       - keep-alive
       Date:
-      - Sat, 29 Jul 2023 22:14:09 GMT
+      - Sat, 29 Jul 2023 21:01:30 GMT
       X-Amzn-Requestid:
-      - d70fad86-db48-48cc-9abe-e5141abb126e
+      - d5b321dd-fe0a-4ce5-b944-274e0b95eb95
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -35,21 +37,24 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I2NPzEnnPHcFyww=
+      - I2CmrGwivHcF5uA=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c58f31-0397f06b4034af4c700603b5;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c57e2a-55d34f4800c38db724323887;Sampled=0;lineage=6ae1048e:0
       X-Cache:
-      - Error from cloudfront
+      - Miss from cloudfront
       Via:
-      - 1.1 1d841c80bfe083de03dcc909a7c5fa9c.cloudfront.net (CloudFront)
+      - 1.1 007f474c20bf8a7a3cce4825eb52f2c8.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - qAeHRpvgs6U7ZpjaYNAUXTW8WJRFk7EE7YAiQMX1vw7sRoKGLxHW1A==
+      - i6z2B8UJEMXpRWCRpN0nlGpg977uR10Qz2jwGeKnH0s9P6fpBeWa0Q==
     body:
       encoding: UTF-8
-      string: '{"error": "Missing API Key."}'
-  recorded_at: Sat, 29 Jul 2023 22:14:09 GMT
+      string: '[{"name": "chicken", "calories": 2019.8, "serving_size_g": 907.184,
+        "fat_total_g": 117.0, "fat_saturated_g": 33.2, "protein_g": 215.3, "sodium_mg":
+        655, "potassium_mg": 1625, "cholesterol_mg": 835, "carbohydrates_total_g":
+        0.4, "fiber_g": 0.0, "sugar_g": 0.0}]'
+  recorded_at: Sat, 29 Jul 2023 21:01:30 GMT
 recorded_with: VCR 6.2.0

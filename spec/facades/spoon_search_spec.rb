@@ -28,7 +28,7 @@ RSpec.describe SpoonSearch do
       VCR.use_cassette("SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe", match_requests_on: [:path]) do
         recipe = Recipe.create!(name: 'Beans', api_id: '1099404', image_url: 'sweeturl', user_submitted: false)
 
-        SpoonSearch.new(api_id: recipe.api_id).recipe_by_id
+        SpoonSearch.new(api_id: recipe.api_id).recipe_by_id_ingredients_results
         
         recipe.reload
         
@@ -72,6 +72,17 @@ RSpec.describe SpoonSearch do
         expect(Recipe.first.name).to include('Bruschetta')
         expect(Recipe.first.api_id).to be_a(String)
         expect(Recipe.first.image_url).to be_a(String)
+      end
+    end
+
+    it 'will add details to recipes from name results' do 
+      recipe1 = Recipe.create!(name: "Potato Wedges", api_id: "1099404", image_url: "here is picture", user_submitted: false)
+      recipe1 = Recipe.create!(name: "Knishes", api_id: "648983", image_url: "here is picture", user_submitted: false)
+      recipe1 = Recipe.create!(name: "Potato Salad", api_id: "653611", image_url: "here is picture", user_submitted: false)
+      recipe1 = Recipe.create!(name: "Minestrone", api_id: "1234", image_url: "here is picture", user_submitted: false)
+      VCR.use_cassette('SpoonSearch/instance_methods/will add details to recipes from name results', match_requests_on: [:path]) do 
+        
+        
       end
     end
   end

@@ -55,10 +55,10 @@ class SpoonSearch
     recipes = spoon_service.recipes_by_name(@name)
     recipes_found = recipes[:results].map do |recipe|
       if !Recipe.find_by(api_id: recipe[:id])
-      Recipe.create!(name: recipe[:title],
-                     api_id: recipe[:id].to_s,
-                     image_url: recipe[:image],
-                     user_submitted: false)
+        Recipe.create!(name: recipe[:title],
+                      api_id: recipe[:id].to_s,
+                      image_url: recipe[:image],
+                      user_submitted: false)
       end
     end
   end

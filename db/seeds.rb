@@ -15,8 +15,30 @@ Recipe.destroy_all
 User.destroy_all
 
 
+@recipe1 = Recipe.create!(name: 'Spaghetti with Marinara')
+@recipe2 = Recipe.create!(name: 'Vegan Nachos')
+@recipe3 = Recipe.create!(name: 'Pasta Primavera')
+@recipe4 = Recipe.create!(name: 'Minestrone')
 
-user_1 = User.create!(uid: "123", name: "Michael C", email: "michael@gmail.com")
+@recipe1.ingredients.create!(name: 'spaghetti', units: 1, unit_type: 'box')
+@recipe1.ingredients.create!(name: 'sauce', units: 1, unit_type: 'can')
+
+@recipe2.ingredients.create!(name: 'chips', units: 1, unit_type: 'bag')
+@recipe2.ingredients.create!(name: 'vegan cheese sauce', units: 1, unit_type: 'cup')
+@recipe2.ingredients.create!(name: 'salsa', units: 1, unit_type: 'jar')
+
+@recipe3.ingredients.create!(name: 'pasta', units: 1, unit_type: 'box')
+@recipe3.ingredients.create!(name: 'sauce', units: 1, unit_type: 'jar')
+@recipe3.ingredients.create!(name: 'garlic', units: 1, unit_type: 'clove')
+
+@recipe4.ingredients.create!(name: 'garlic', units: 1, unit_type: 'clove')
+@recipe4.ingredients.create!(name: 'pasta', units: 1, unit_type: 'cup')
+@recipe4.ingredients.create!(name: 'celery', units: 1, unit_type: 'cup')
+@recipe4.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
+
+
+
+user_1 = User.create!(uid: "123", name: "Michael C", email: "michael1@gmail.com")
 
 recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "123456789123456789", instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
 chicken = Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs')

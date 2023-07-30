@@ -3,9 +3,11 @@ require 'rails_helper'
 RSpec.describe SpoonacularService do
   describe 'instance methods' do
     describe '#recipes_by_ingredients' do
-      it 'gets all recipes based on list of ingredients', :vcr do
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients.yml") do 
-          query = ['salt, potatoes']
+      it 'gets all recipes based on list of ingredients' do
+        VCR.use_cassette(
+          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients', 
+          match_requests_on: [:path]) do
+          query = 'salt, potatoes'
           search = SpoonacularService.new.recipes_by_ingredients(query)
 
           expect(search).to be_an(Array)
@@ -21,11 +23,13 @@ RSpec.describe SpoonacularService do
         end
       end
 
-      it "gets a list of recipes from a basic query/name", :vcr do 
-        VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonacularService/instance_methods/_recipes_by_ingredients/gets_a_list_of_recipes_from_a_basic_query/name.yml") do 
-          query = "bruschetta stuffed"
+      it 'gets a list of recipes from a basic query/name' do
+        VCR.use_cassette(
+          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_a_list_of_recipes_from_a_basic_query/name', 
+          match_requests_on: [:path]) do
+          query = 'bruschetta stuffed'
           search = SpoonacularService.new.recipes_by_name(query)
-          
+
           expect(search[:results]).to be_an(Array)
 
           recipe = search[:results].first

@@ -2,6 +2,7 @@
 require 'spec_helper'
 
 require 'simplecov'
+
 SimpleCov.start
 
 ENV['RAILS_ENV'] ||= 'test'
@@ -74,8 +75,8 @@ Shoulda::Matchers.configure do |config|
 end
 
 VCR.configure do |config|
-  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.allow_http_connections_when_no_cassette = true
+  config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
   config.filter_sensitive_data('X-Api-Key') { ENV['NUTRITION_API_KEY'] }
   config.filter_sensitive_data('Authorization') { ENV['EMISSIONS_API_KEY'] }

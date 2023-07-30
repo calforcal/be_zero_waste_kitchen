@@ -4,7 +4,7 @@ RSpec.describe NutritionFacade do
   describe 'Nutrition' do
     describe '#total_ingredients' do
       it 'can produce the weight of all ingredients given', :vcr do
-        query = "1 lbs Chicken"
+        query = '1 lbs Chicken'
         data = NutritionFacade.new(query).total_ingredients
 
         expect(data).to be_a Nutrition

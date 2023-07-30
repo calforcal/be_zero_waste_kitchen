@@ -51,7 +51,8 @@ class SpoonSearch
     recipes_found = recipes[:results].map do |recipe|
       Recipe.create!(name: recipe[:title],
                      api_id: recipe[:id].to_s,
-                     image_url: recipe[:image])
+                     image_url: recipe[:image],
+                    user_submitted: false)
     end
   end
 

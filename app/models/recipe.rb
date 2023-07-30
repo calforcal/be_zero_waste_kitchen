@@ -13,7 +13,8 @@ class Recipe < ApplicationRecord
   def self.ingredient_search_details(ingredients)
     term1 = joins(:ingredients).where(:ingredients => {:name => ingredients[0]})
     term2 = joins(:ingredients).where(:ingredients => {:name => ingredients[1]})
-    term1.merge(term2)
+    term3 = joins(:ingredients).where(:ingredients => {:name => ingredients[2]})
+    term1.merge(term2).merge(term3)
   end
 end
 

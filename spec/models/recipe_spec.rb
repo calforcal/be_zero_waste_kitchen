@@ -28,6 +28,7 @@ RSpec.describe Recipe, type: :model do
 
       @recipe3.ingredients.create!(name: "pasta", units: 1, unit_type: "box")
       @recipe3.ingredients.create!(name: "sauce", units: 1, unit_type: "jar")
+      @recipe3.ingredients.create!(name: "garlic", units: 1, unit_type: "clove")
 
     end
 
@@ -38,7 +39,7 @@ RSpec.describe Recipe, type: :model do
     end
 
     it "#ingredient_search_details" do 
-      expect(Recipe.ingredient_search_details(["sauce", "pasta"])).to match_array([@recipe3])
+      expect(Recipe.ingredient_search_details(["sauce", "pasta", "garlic"])).to match_array([@recipe3])
     end
   end
 end

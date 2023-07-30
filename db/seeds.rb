@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+RecipeIngredient.destroy_all
+Ingredient.destroy_all
+Recipe.destroy_all
 
 @recipe1 = Recipe.create!(name: "Spaghetti with Marinara")
 @recipe2 = Recipe.create!(name: "Vegan Nachos")
@@ -19,3 +22,4 @@
 
 @recipe3.ingredients.create!(name: "pasta", units: 1, unit_type: "box")
 @recipe3.ingredients.create!(name: "sauce", units: 1, unit_type: "jar")
+@recipe3.ingredients.create!(name: "garlic", units: 1, unit_type: "clove")

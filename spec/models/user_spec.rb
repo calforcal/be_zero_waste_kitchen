@@ -86,6 +86,15 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe '#num_recipes_saved' do
+    it 'can return the number of recipes a user has saved' do
+      expect(Recipe.all.count).to eq(3)
+      expect(user_1.recipes.count).to eq(2)
+      
+      expect(user_1.num_recipes_saved).to eq(2)
+    end
+  end
+
     describe '#user_stats' do
       it 'can return a condensed version of all user stats', :vcr do
         expect(user_1.user_stats).to eq({
@@ -97,7 +106,7 @@ RSpec.describe User, type: :model do
     end
 
     describe '#recipes_cooked' do
-      it 'can return the number of recipes a user as cooked' do
+      it 'can return the recipes a user as cooked' do
         expect(Recipe.all.count).to eq(3)
         expect(user_1.recipes.count).to eq(2)
 
@@ -107,7 +116,7 @@ RSpec.describe User, type: :model do
     end
 
     describe '#recipes_created' do
-      it 'can return the number of recipes a user has created' do
+      it 'can return the recipes a user has created' do
         expect(Recipe.all.count).to eq(3)
         expect(user_1.recipes.count).to eq(2)
 
@@ -115,5 +124,18 @@ RSpec.describe User, type: :model do
         expect(user_1.recipes_created.first.name).to eq(recipe_1.name)
       end
     end
+
+    describe '#recipes_saved' do
+    it 'can return the recipes a user has saved' do
+      expect(Recipe.all.count).to eq(3)
+      expect(user_1.recipes.count).to eq(2)
+
+      expect(user_1.recipes_saved.first.id).to eq(recipe_1.id)
+      expect(user_1.recipes_saved.first.name).to eq(recipe_1.name)
+
+      expect(user_1.recipes_saved.second.id).to eq(recipe_2.id)
+      expect(user_1.recipes_saved.second.name).to eq(recipe_2.name)
+    end
+  end
   end
 end

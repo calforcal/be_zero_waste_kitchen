@@ -135,6 +135,32 @@ describe 'Users API' do
         expect(first_recipe[:api_id]).to be_a String
       end
 
+      it 'can get one merchants created recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_saved_recipes = user[:attributes]
+
+        expect(user_saved_recipes).to have_key(:saved_recipes)
+        expect(user_saved_recipes[:saved_recipes]).to be_an Array
+        expect(user_saved_recipes[:saved_recipes].first).to be_an Hash
+
+        first_recipe = user_saved_recipes[:saved_recipes].first
+
+        expect(first_recipe).to have_key(:id)
+        expect(first_recipe[:id]).to be_an Integer
+
+        expect(first_recipe).to have_key(:name)
+        expect(first_recipe[:name]).to be_a String
+
+        expect(first_recipe).to have_key(:api_id)
+        expect(first_recipe[:api_id]).to be_a String
+      end
+
       it 'can get the Number of one merchants cooked recipes', :vcr do
         get api_v1_user_path(user_1)
 
@@ -161,6 +187,20 @@ describe 'Users API' do
 
         expect(user_created_recipes).to have_key(:num_created_recipes)
         expect(user_created_recipes[:num_created_recipes]).to be_an Integer
+      end
+
+      it 'can get the Number of one merchants saved recipes', :vcr do
+        get api_v1_user_path(user_1)
+
+        expect(response).to be_successful
+
+        parsed = JSON.parse(response.body, symbolize_names: true)
+
+        user = parsed[:data]
+        user_saved_recipes = user[:attributes]
+
+        expect(user_saved_recipes).to have_key(:num_saved_recipes)
+        expect(user_saved_recipes[:num_saved_recipes]).to be_an Integer
       end
     end
   end

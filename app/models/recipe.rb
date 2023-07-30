@@ -11,18 +11,24 @@ class Recipe < ApplicationRecord
   end
 
   def self.ingredient_search_details(ingredients)
-    term_results = []
-    ingredients.each do |ingredient|
-      term_results << joins(:ingredients).where(:ingredients => {:name => ingredient})
-    end
-    first_result = term_results[0]
-    all_other_results = term_results.map do |result|
-      merge(result)
-    end
-    require 'pry'; binding.pry
-    first_result.all_other_results
+    select('recipes.id, recipes.name, recipes.api_id')
+      .joins(:ingredients)
+      .where("ingredients.name ILIKE ANY(ARRAY[?])", ingredients)
+      .group('recipes.id')
+      .order('COUNT(1) DESC')
   end
 end
+
+# term_results = []
+# ingredients.each do |ingredient|
+#   term_results << joins(:ingredients).where(:ingredients => {:name => ingredient})
+# end
+# first_result = term_results[0]
+# all_other_results = term_results.map do |result|
+#   merge(result)
+# end
+# first_result.all_other_results
+# end
 
 # term1 = joins(:ingredients).where(:ingredients => {:name => ingredients[0]})
 # term2 = joins(:ingredients).where(:ingredients => {:name => ingredients[1]})

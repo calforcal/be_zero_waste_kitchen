@@ -11,8 +11,8 @@ class Recipe < ApplicationRecord
   end
 
   def self.ingredient_search_details(ingredients)
-    select('recipes.id, recipes.name, recipes.api_id')
-      .joins(:ingredients)
+    joins(:ingredients)
+      .select('recipes.id, recipes.name, recipes.api_id')
       .where('ingredients.name ILIKE ANY(ARRAY[?])', ingredients)
       .group('recipes.id')
       .order('COUNT(1) DESC')

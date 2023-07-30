@@ -10,4 +10,42 @@ RSpec.describe RecipeSearch do
       expect(search.ingredients[0]).to eq("taco shells")
     end
   end
+
+  describe "instance methods" do 
+    it "search with name" do 
+      VCR.use_cassette("RecipeSearch/instance_methods/search_with_name", match_requests_on: [:path]) do 
+        expect(Recipe.all.count).to eq(0)
+        expect(Ingredient.all.count).to eq(0)
+        expect(RecipeIngredient.all.count).to eq(0)
+
+        params = {name: "tacos"}
+        search = RecipeSearch.new(params)
+        search.search
+
+        expect(Recipe.all.count).to_not eq(0)
+        
+        expect(Recipe.first.name).to be_a(String)
+        expect(Recipe.first.api_id).to be_a(String)
+        expect(Recipe.first.image_url).to be_a(String)
+      end
+    end
+    
+    it "search with ingredients" do 
+      VCR.use_cassette("RecipeSearch/instance_methods/search_with_ingredients", match_requests_on: [:path]) do 
+        expect(Recipe.all.count).to eq(0)
+        expect(Ingredient.all.count).to eq(0)
+        expect(RecipeIngredient.all.count).to eq(0)
+  
+        params = {ingredients: ["butter", "pasta"]}
+        search = RecipeSearch.new(params)
+        search.search
+  
+        expect(Recipe.all.count).to_not eq(0)
+        
+        expect(Recipe.first.name).to be_a(String)
+        expect(Recipe.first.api_id).to be_a(String)
+        expect(Recipe.first.image_url).to be_a(String)
+      end
+    end
+  end
 end

@@ -15,7 +15,7 @@ class RecipeSearch
         SpoonSearch.new(name: @name).name_search_details
       end
     elsif @ingredients
-      recipes = Recipe.find_ingredients(@ingredients)
+      recipes = Recipe.ingredient_search_details(@ingredients)
       if recipes.count >= 10
         recipes
       else

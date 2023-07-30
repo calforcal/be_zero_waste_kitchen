@@ -7,7 +7,7 @@ RSpec.describe SpoonacularService do
         VCR.use_cassette(
           'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients', 
           match_requests_on: [:path]) do
-          query = ['salt, potatoes']
+          query = 'salt, potatoes'
           search = SpoonacularService.new.recipes_by_ingredients(query)
 
           expect(search).to be_an(Array)

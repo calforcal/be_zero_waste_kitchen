@@ -9,7 +9,7 @@ RSpec.describe SpoonSearch do
         expect(Ingredient.all.count).to eq(0)
         expect(RecipeIngredient.all.count).to eq(0)
 
-        query = %w[potatoes onions]
+        query = 'potatoes onions'
         SpoonSearch.new(ingredients: query).ingredient_search
         
         expect(Recipe.all.count).to_not eq(0)
@@ -46,7 +46,7 @@ RSpec.describe SpoonSearch do
         expect(Ingredient.all.count).to eq(0)
         expect(RecipeIngredient.all.count).to eq(0)
 
-        query = %w[potatoes onions]
+        query = 'potatoes onions'
         SpoonSearch.new(ingredients: query).ingredient_search_details
         
         expect(Recipe.all.count).to_not eq(0)

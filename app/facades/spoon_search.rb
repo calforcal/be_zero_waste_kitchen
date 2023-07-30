@@ -36,8 +36,11 @@ class SpoonSearch
     recipe = spoon_service.recipe_by_id(@api_id)
     saved_recipe = Recipe.find_by(api_id: @api_id)
     instructions = []
-    recipe[:analyzedInstructions].first[:steps].each do |step|
+    instructions_hash = recipe[:analyzedInstructions].first
+    if instructions_hash
+    instructions_hash[:steps].each do |step|
       instructions << step[:step] if step
+    end
     end
     saved_recipe.update(instructions: instructions.flatten,
                         cook_time: recipe[:readyInMinutes],
@@ -52,7 +55,7 @@ class SpoonSearch
       Recipe.create!(name: recipe[:title],
                      api_id: recipe[:id].to_s,
                      image_url: recipe[:image],
-                    user_submitted: false)
+                     user_submitted: false)
     end
   end
 

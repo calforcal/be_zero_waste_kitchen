@@ -52,5 +52,20 @@ RSpec.describe RecipeSearch do
         expect(Recipe.last.image_url).to be_a(String)
       end
     end
+
+    it "searches for Api only if there are < 10 local results" do 
+      # VCR not needed here b/c local database results will be > 10. 
+      # if VCR error occurs here then the conditional or search function has changed/broken.
+      recipe_search_data_name
+      recipe_search_data_ingredients
+
+      params = {name: "gaRlic"}
+
+      expect(RecipeSearch.new(params).search.count).to eq(12)
+      
+      params = {ingredients: ["garlic", "tofu"]}
+      
+      expect(RecipeSearch.new(params).search.count).to eq(12)
+    end
   end
 end

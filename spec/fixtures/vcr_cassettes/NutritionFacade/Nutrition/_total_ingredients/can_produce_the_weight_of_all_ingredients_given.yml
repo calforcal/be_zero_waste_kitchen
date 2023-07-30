@@ -7,6 +7,8 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
+      X-Api-Key:
+      - X-Api-Key
       User-Agent:
       - Faraday v2.7.10
       Accept-Encoding:
@@ -15,19 +17,19 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '29'
+      - '258'
       Connection:
       - keep-alive
       Date:
-      - Sat, 29 Jul 2023 22:13:58 GMT
+      - Sun, 30 Jul 2023 20:37:40 GMT
       X-Amzn-Requestid:
-      - a6a9508c-fa22-4c9c-b401-202ff8b75823
+      - b1f10b13-9db4-4950-bcb0-983e2bc29456
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -35,21 +37,24 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I2NOCEGNPHcFdrQ=
+      - I5SDKG-EvHcF_iA=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c58f26-4e30826a66241f121d831b0c;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c6ca13-0579037e2fdf47115aa30e32;Sampled=0;lineage=6ae1048e:0
       X-Cache:
-      - Error from cloudfront
+      - Miss from cloudfront
       Via:
-      - 1.1 85d3c7f5b91d4c8492ba27d65fa677d0.cloudfront.net (CloudFront)
+      - 1.1 08d2ad2df7ae14c356e73a61afe3347c.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - CAEri6W5ga-AzRLGnOUqEshb0hPl-nRzlldulEQxmanJd_heX7Jqyw==
+      - wisDzGR1U9hfSZ9-3afeIrVU9DgZDD4YV1ZUeV1INy2BHBtMQhUN8A==
     body:
       encoding: UTF-8
-      string: '{"error": "Missing API Key."}'
-  recorded_at: Sat, 29 Jul 2023 22:13:58 GMT
+      string: '[{"name": "chicken", "calories": 1009.9, "serving_size_g": 453.592,
+        "fat_total_g": 58.5, "fat_saturated_g": 16.6, "protein_g": 107.6, "sodium_mg":
+        327, "potassium_mg": 812, "cholesterol_mg": 417, "carbohydrates_total_g":
+        0.2, "fiber_g": 0.0, "sugar_g": 0.0}]'
+  recorded_at: Sun, 30 Jul 2023 20:37:40 GMT
 recorded_with: VCR 6.2.0

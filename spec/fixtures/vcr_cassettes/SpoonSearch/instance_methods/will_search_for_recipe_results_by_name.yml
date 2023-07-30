@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 29 Jul 2023 22:14:09 GMT
+      - Sun, 30 Jul 2023 03:14:20 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,24 +40,24 @@ http_interactions:
       X-Api-Quota-Request:
       - '1.02'
       X-Api-Quota-Used:
-      - '17.279999999999998'
+      - '71.42000000000002'
       X-Api-Quota-Left:
-      - '132.72'
+      - '78.57999999999998'
       Cf-Cache-Status:
       - DYNAMIC
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=B8F3%2FByn85vnIpERImZa2uicQ5EoEYVVCdY7E%2B724NnELhjxfljVn0q%2Bz63H8iEot2d0ehmdQCihgPWh4HNxCra3ma%2BHQEZajM5GiBhIzRpZ0Q%2FT1JAVVnUfC2W%2FP85GE0F%2Ft8k%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=aTwcax%2B0d7ZwKYtyiv2yLz6tQa4%2F%2Fi7Kovp1faPzEH6MfHrwXsCrYNICSGslaj3mZl3kQOFv4vt3obgtz4a4b7V6E2xr8bwnhnGdDm1MEMyI2yGy3rNEOHVn8TaO2ckMp%2BEKb88%3D"}],"group":"cf-nel","max_age":604800}'
       Nel:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 7ee8b68ddfb51f25-DEN
+      - 7eea6e4c484e1f49-DEN
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: '{"results":[{"id":636356,"title":"Bruschetta Stuffed Potatoes","image":"https://spoonacular.com/recipeImages/636356-312x231.jpg","imageType":"jpg"},{"id":636355,"title":"BRUSCHETTA
         STUFFED PORTOBELLOS","image":"https://spoonacular.com/recipeImages/636355-312x231.jpg","imageType":"jpg"}],"offset":0,"number":10,"totalResults":2}'
-  recorded_at: Sat, 29 Jul 2023 22:14:09 GMT
+  recorded_at: Sun, 30 Jul 2023 03:14:20 GMT
 recorded_with: VCR 6.2.0

@@ -1,0 +1,63 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.spoonacular.com/recipes/complexSearch?apiKey=apiKey&query=bruschetta,%20stuffed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 30 Jul 2023 03:17:15 GMT
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '328'
+      Connection:
+      - keep-alive
+      Allow-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Authorization, UserId, Hash, Name, Password, Accept, Accept-Language, x-api-key,
+        Content-Language, Content-Type, Cache-Control, Origin, X-Requested-With
+      Access-Control-Allow-Methods:
+      - GET, HEAD, POST, OPTIONS, DELETE, PUT
+      Allow-Control-Allow-Methods:
+      - GET, HEAD, POST, OPTIONS, DELETE, PUT
+      X-Api-Quota-Request:
+      - '1.02'
+      X-Api-Quota-Used:
+      - '85.64'
+      X-Api-Quota-Left:
+      - '64.36'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Report-To:
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=8IwMkQB7vJxXCma2U2xrT0TubKiq3RWfedkY3x8uwCGi2skfKNfLlX50Kw0pdRd0rdT2ptuyORpkZGuz6jU8CL6a%2F0AtU1%2BcahIxWpwT%2B5EH4FHwiTDImlsVJwhr%2F13N%2BzrwoeU%3D"}],"group":"cf-nel","max_age":604800}'
+      Nel:
+      - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 7eea72910bc41f40-DEN
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"results":[{"id":636356,"title":"Bruschetta Stuffed Potatoes","image":"https://spoonacular.com/recipeImages/636356-312x231.jpg","imageType":"jpg"},{"id":636355,"title":"BRUSCHETTA
+        STUFFED PORTOBELLOS","image":"https://spoonacular.com/recipeImages/636355-312x231.jpg","imageType":"jpg"}],"offset":0,"number":10,"totalResults":2}'
+  recorded_at: Sun, 30 Jul 2023 03:17:15 GMT
+recorded_with: VCR 6.2.0

@@ -5,8 +5,8 @@ RSpec.describe SpoonacularService do
     describe '#recipes_by_ingredients' do
       it 'gets all recipes based on list of ingredients', :vcr do
         VCR.use_cassette(
-          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients.yml', match_requests_on: [:path]
-        ) do
+          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_all_recipes_based_on_list_of_ingredients.yml', 
+          match_requests_on: [:path]) do
           query = ['salt, potatoes']
           search = SpoonacularService.new.recipes_by_ingredients(query)
 
@@ -25,8 +25,8 @@ RSpec.describe SpoonacularService do
 
       it 'gets a list of recipes from a basic query/name', :vcr do
         VCR.use_cassette(
-          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_a_list_of_recipes_from_a_basic_query/name.yml', match_requests_on: [:path]
-        ) do
+          'SpoonacularService/instance_methods/_recipes_by_ingredients/gets_a_list_of_recipes_from_a_basic_query/name.yml', 
+          match_requests_on: [:path]) do
           query = 'bruschetta stuffed'
           search = SpoonacularService.new.recipes_by_name(query)
 

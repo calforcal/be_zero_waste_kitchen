@@ -18,6 +18,7 @@ RSpec.describe Recipe, type: :model do
       @recipe1 = Recipe.create!(name: "Spaghetti with Marinara")
       @recipe2 = Recipe.create!(name: "Vegan Nachos")
       @recipe3 = Recipe.create!(name: "Pasta Primavera")
+      @recipe4 = Recipe.create!(name: "Minestrone")
 
       @recipe1.ingredients.create!(name: "spaghetti", units: 1, unit_type: "box")
       @recipe1.ingredients.create!(name: "sauce", units: 1, unit_type: "can")
@@ -30,6 +31,11 @@ RSpec.describe Recipe, type: :model do
       @recipe3.ingredients.create!(name: "sauce", units: 1, unit_type: "jar")
       @recipe3.ingredients.create!(name: "garlic", units: 1, unit_type: "clove")
 
+      @recipe4.ingredients.create!(name: "garlic", units: 1, unit_type: "clove")
+      @recipe4.ingredients.create!(name: "pasta", units: 1, unit_type: "cup")
+      @recipe4.ingredients.create!(name: "celery", units: 1, unit_type: "cup")
+      @recipe4.ingredients.create!(name: "beans", units: 1, unit_type: "can")
+
     end
 
     it "#find_name" do 
@@ -39,7 +45,7 @@ RSpec.describe Recipe, type: :model do
     end
 
     it "#ingredient_search_details" do 
-      expect(Recipe.ingredient_search_details(["sauce", "pasta", "garlic"])).to eq([@recipe3, @recipe1])
+      expect(Recipe.ingredient_search_details(["sauce", "pasta", "garlic"])).to eq([@recipe3, @recipe4, @recipe1])
     end
   end
 end

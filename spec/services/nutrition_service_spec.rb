@@ -4,7 +4,7 @@ describe NutritionService do
   describe 'instance methods' do
     describe '#ingredients weight' do
       it 'can take in a string of ingredients and return nutrition facts', :vcr do
-        query = "2 lbs chicken"
+        query = '2 lbs chicken'
         search = NutritionService.new.ingredients_weight(query)
         expect(search).to be_an(Array)
         expect(search.first).to be_a(Hash)

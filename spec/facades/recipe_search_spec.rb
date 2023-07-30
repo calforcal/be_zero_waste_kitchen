@@ -27,12 +27,12 @@ RSpec.describe SpoonSearch do
       # VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_add_detailed_data_to_a_recipe_yml.yml") do
       # end
 
-        recipe.reload
+      recipe.reload
 
-        expect(recipe.instructions).to be_an(Array)
-        expect(recipe.cook_time).to be_an(Integer)
-        expect(recipe.source_name).to be_a(String)
-        expect(recipe.source_url).to be_a(String)
+      expect(recipe.instructions).to be_an(Array)
+      expect(recipe.cook_time).to be_an(Integer)
+      expect(recipe.source_name).to be_a(String)
+      expect(recipe.source_url).to be_a(String)
     end
 
     it 'will search by ingredients with detailed information', :vcr do
@@ -54,15 +54,15 @@ RSpec.describe SpoonSearch do
       expect(Ingredient.first.units).to be_a(Float)
     end
 
-    it "will search for recipe results by name", :vcr do 
+    it 'will search for recipe results by name', :vcr do
       expect(Recipe.all.count).to eq(0)
-      VCR.use_cassette("spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_search_for_recipe_results_by_name.yml") do
-        query = "bruschetta stuffed"
+      VCR.use_cassette('spec/fixtures/vcr_cassettes/SpoonSearch/instance_methods/will_search_for_recipe_results_by_name.yml') do
+        query = 'bruschetta stuffed'
         recipes = SpoonSearch.new(name: query).name_search
       end
 
       expect(Recipe.all.count).to_not eq(0)
-      expect(Recipe.first.name).to include("Bruschetta")
+      expect(Recipe.first.name).to include('Bruschetta')
       expect(Recipe.first.api_id).to be_a(String)
       expect(Recipe.first.image_url).to be_a(String)
     end

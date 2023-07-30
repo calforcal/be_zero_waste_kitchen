@@ -1,5 +1,5 @@
 class NutritionFacade
-  def initialize(search=nil)
+  def initialize(search = nil)
     @search = search
   end
 

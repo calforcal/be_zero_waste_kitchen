@@ -7,13 +7,13 @@ class Recipe < ApplicationRecord
   validates :public_status, presence: true
 
   def self.find_name(name)
-    where("name ILIKE ?", "%#{name}%")
+    where('name ILIKE ?', "%#{name}%")
   end
 
   def self.ingredient_search_details(ingredients)
     select('recipes.id, recipes.name, recipes.api_id')
       .joins(:ingredients)
-      .where("ingredients.name ILIKE ANY(ARRAY[?])", ingredients)
+      .where('ingredients.name ILIKE ANY(ARRAY[?])', ingredients)
       .group('recipes.id')
       .order('COUNT(1) DESC')
   end

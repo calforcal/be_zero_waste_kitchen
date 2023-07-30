@@ -19,12 +19,12 @@ class SpoonSearch
                                       user_submitted: false)
       recipe[:usedIngredients].map do |ingredient|
         recipe_created.ingredients.create!(name: ingredient[:name],
-                                          unit_type: ingredient[:unitShort],
-                                          units: ingredient[:amount])
+                                           unit_type: ingredient[:unitShort],
+                                           units: ingredient[:amount])
         recipe[:missedIngredients].map do |ingredient|
           recipe_created.ingredients.create!(name: ingredient[:name],
-                                            unit_type: ingredient[:unitShort],
-                                            units: ingredient[:amount])
+                                             unit_type: ingredient[:unitShort],
+                                             units: ingredient[:amount])
         end
       end
       recipes_created << recipe_created
@@ -50,8 +50,8 @@ class SpoonSearch
     recipes = spoon_service.recipes_by_name(@name)
     recipes_found = recipes[:results].map do |recipe|
       Recipe.create!(name: recipe[:title],
-                    api_id: recipe[:id].to_s,
-                    image_url: recipe[:image])
+                     api_id: recipe[:id].to_s,
+                     image_url: recipe[:image])
     end
   end
 

@@ -38,8 +38,7 @@ RSpec.describe Recipe, type: :model do
     end
 
     it "#ingredient_search_details" do 
-      
-      expect(Recipe.ingredient_search_details(["sauce"])).to match_array([@recipe1, @recipe3])
+      expect(Recipe.ingredient_search_details(["sauce", "pasta"])).to match_array([@recipe3])
     end
   end
 end

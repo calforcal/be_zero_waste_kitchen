@@ -11,8 +11,11 @@ class Recipe < ApplicationRecord
   end
 
   def self.ingredient_search_details(ingredients)
-    require 'pry'; binding.pry
-    joins(:ingredients).where(:ingredients => {:name => ingredients })
-    joins(:ingredients).where(:ingredients => {:name => "sauce" }).and(Recipe.joins(:ingredients).where(:ingredients => {:name => "pasta" }))
+    term1 = joins(:ingredients).where(:ingredients => {:name => ingredients[0]})
+    term2 = joins(:ingredients).where(:ingredients => {:name => ingredients[1]})
+    term1.merge(term2)
   end
 end
+
+# joins(:ingredients).where(:ingredients => {:name => ingredients })
+#     joins(:ingredients).where(:ingredients => {:name => "sauce" }).and(Recipe.joins(:ingredients).where(:ingredients => {:name => "pasta" }))

@@ -1,7 +1,7 @@
 class RecipeSerializer
   include JSONAPI::Serializer
   attributes :name,
-             :instructions,
+             :ingredients,
              :image_url,
              :cook_time,
              :public_status,

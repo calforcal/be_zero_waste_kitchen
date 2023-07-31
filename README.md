@@ -103,7 +103,7 @@
   "saved_status": "boolean"
 }
 ```
-### Rate a Recip (user_recipes)
+### Rate a Recipe (user_recipes)
 <p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?rating=5’ </p>
 <p> Example of the body details to be provided when creating a saved recipe. (Ratings are 1-5) </p>
 
@@ -112,7 +112,7 @@
   "uid": "integer",
   "recipe_id": "integer",
   "api_id": "string",
-  "rating": "integer"
+  "num_stars": "integer"
 }
 ```
 

@@ -1,0 +1,115 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://trackapi.nutritionix.com/v2/search/instant?query=grape
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-App-Id:
+      - 3a00d747
+      X-App-Key:
+      - dd87cc7895806bcadfa7efefac30e15f
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-store, no-cache, must-revalidate, proxy-revalidate
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Mon, 31 Jul 2023 21:23:46 GMT
+      Etag:
+      - W/"31d7-v9Goo3DTGBTDRSfSr3/GLXy/aM4"
+      Expires:
+      - '0'
+      Pragma:
+      - no-cache
+      Server:
+      - nginx/1.8.0
+      Status:
+      - 200 OK
+      Surrogate-Control:
+      - no-store
+      X-Powered-By:
+      - Phusion Passenger 5.0.16
+      Content-Length:
+      - '12759'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"common":[{"food_name":"grape","serving_unit":"grapes","tag_name":"grape","serving_qty":10,"common_type":null,"tag_id":"586","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/586_thumb.jpg"},"locale":"en_US"},{"food_name":"grapes","serving_unit":"grapes","tag_name":"grape","serving_qty":10,"common_type":null,"tag_id":"586","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/586_thumb.jpg"},"locale":"en_US"},{"food_name":"red
+        grape","serving_unit":"grapes","tag_name":"red grapes","serving_qty":10,"common_type":null,"tag_id":"7938","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7938_thumb.jpg"},"locale":"en_US"},{"food_name":"grapeseed","serving_unit":"tablespoon","tag_name":"grapeseed
+        oil","serving_qty":1,"common_type":null,"tag_id":"2732","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/2732_thumb.jpg"},"locale":"en_US"},{"food_name":"red
+        grapes","serving_unit":"grapes","tag_name":"red grapes","serving_qty":10,"common_type":null,"tag_id":"7938","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7938_thumb.jpg"},"locale":"en_US"},{"food_name":"grapefruit","serving_unit":"fruit
+        (3-3/4\" dia)","tag_name":"grapefruit","serving_qty":0.5,"common_type":null,"tag_id":"589","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/589_thumb.jpg"},"locale":"en_US"},{"food_name":"green
+        grape","serving_unit":"grapes","tag_name":"green grapes","serving_qty":10,"common_type":null,"tag_id":"7936","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7936_thumb.jpg"},"locale":"en_US"},{"food_name":"grape
+        jelly","serving_unit":"serving 1 tbsp","tag_name":"grape jelly","serving_qty":1,"common_type":null,"tag_id":"14953","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/14949_thumb.jpg"},"locale":"en_US"},{"food_name":"grape
+        juice","serving_unit":"cup","tag_name":"grape juice","serving_qty":1,"common_type":null,"tag_id":"223","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/223_thumb.jpg"},"locale":"en_US"},{"food_name":"green
+        grapes","serving_unit":"grapes","tag_name":"green grapes","serving_qty":10,"common_type":null,"tag_id":"7936","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7936_thumb.jpg"},"locale":"en_US"},{"food_name":"grape
+        tomato","serving_unit":"grape tomato","tag_name":"grape tomato","serving_qty":1,"common_type":null,"tag_id":"3494","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/3494_thumb.jpg"},"locale":"en_US"},{"food_name":"grapeseed
+        oil","serving_unit":"tablespoon","tag_name":"grapeseed oil","serving_qty":1,"common_type":null,"tag_id":"2732","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/2732_thumb.jpg"},"locale":"en_US"},{"food_name":"tomatoes
+        grape","serving_unit":"grape tomato","tag_name":"grape tomato","serving_qty":1,"common_type":null,"tag_id":"3494","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/3494_thumb.jpg"},"locale":"en_US"},{"food_name":"grape
+        tomatoes","serving_unit":"grape tomato","tag_name":"grape tomato","serving_qty":1,"common_type":null,"tag_id":"3494","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/3494_thumb.jpg"},"locale":"en_US"},{"food_name":"grapefruit
+        vodka","serving_unit":"fl oz","tag_name":"grapefruit vodka","serving_qty":1,"common_type":null,"tag_id":"3720","photo":{"thumb":"https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png","highres":null,"is_user_uploaded":false},"locale":"en_US"},{"food_name":"champagne
+        grapes","serving_unit":"grapes","tag_name":"champagne grapes","serving_qty":10,"common_type":null,"tag_id":"13069","photo":{"thumb":"https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png","highres":null,"is_user_uploaded":false},"locale":"en_US"},{"food_name":"grapefruit
+        juice","serving_unit":"cup","tag_name":"grapefruit juice","serving_qty":1,"common_type":null,"tag_id":"590","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/590_thumb.jpg"},"locale":"en_US"},{"food_name":"ruby
+        red grapefruit","serving_unit":"fruit (3-3/4\" dia)","tag_name":"grapefruit","serving_qty":0.5,"common_type":null,"tag_id":"589","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/589_thumb.jpg"},"locale":"en_US"},{"food_name":"red
+        seedless grapes","serving_unit":"grapes","tag_name":"red grapes","serving_qty":10,"common_type":null,"tag_id":"7938","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7938_thumb.jpg"},"locale":"en_US"},{"food_name":"green
+        seedless grapes","serving_unit":"grapes","tag_name":"green grapes","serving_qty":10,"common_type":null,"tag_id":"7936","photo":{"thumb":"https://nix-tag-images.s3.amazonaws.com/7936_thumb.jpg"},"locale":"en_US"}],"branded":[{"food_name":"Grape-Nuts
+        Cereal","serving_unit":"cup","nix_brand_id":"51db37b3176fe9790a89873a","brand_name_item_name":"Post
+        Grape-Nuts Cereal","serving_qty":0.5,"nf_calories":200,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/60aa5e40a628620009501db6.jpeg"},"brand_name":"Post","region":1,"brand_type":2,"nix_item_id":"52e7e032e463807a5c0004b3","locale":"en_US"},{"food_name":"Cereal,
+        Flakes","serving_unit":"cup","nix_brand_id":"51db37bf176fe9790a898f8b","brand_name_item_name":"Grape-Nuts
+        Cereal, Flakes","serving_qty":1,"nf_calories":150,"photo":{"thumb":"https://assets.syndigo.com/7c881a28-f726-4c8c-a6f0-02600c82e248"},"brand_name":"Grape-Nuts","region":1,"brand_type":2,"nix_item_id":"51d37984cc9bff5553aa9bda","locale":"en_US"},{"food_name":"Grape
+        Jelly","serving_unit":"tbsp","nix_brand_id":"51db37b0176fe9790a8983f2","brand_name_item_name":"Welch''s
+        Grape Jelly","serving_qty":1,"nf_calories":50,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/60098e1fbd82960b43b05b41.jpeg"},"brand_name":"Welch''s","region":1,"brand_type":2,"nix_item_id":"54761ec459752938643a8c2d","locale":"en_US"},{"food_name":"Seltzer,
+        Grapefruit","serving_unit":"can","nix_brand_id":"53fde0159e3d8be14538ac77","brand_name_item_name":"Spindrift
+        Seltzer, Grapefruit","serving_qty":1,"nf_calories":17,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/557354c7581397bb5c075443.jpeg"},"brand_name":"Spindrift","region":1,"brand_type":2,"nix_item_id":"557354465659aa9d5c6bd309","locale":"en_US"},{"food_name":"Peanut
+        Butter & Grape Jelly Sandwich","serving_unit":"sandwich","nix_brand_id":"51db37b3176fe9790a8986d0","brand_name_item_name":"Smucker''s
+        Peanut Butter & Grape Jelly Sandwich","serving_qty":1,"nf_calories":320,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/642ea71c1c48b00008370015.jpeg"},"brand_name":"Smucker''s","region":1,"brand_type":2,"nix_item_id":"53e521b23f9fdd9357543e66","locale":"en_US"},{"food_name":"Uncrustables
+        Peanut Butter & Grape Jelly Sandwich","serving_unit":"sandwich","nix_brand_id":"51db37b3176fe9790a8986d0","brand_name_item_name":"Smucker''s
+        Uncrustables Peanut Butter & Grape Jelly Sandwich","serving_qty":1,"nf_calories":210,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/647334eab90043000857945e.jpeg"},"brand_name":"Smucker''s","region":1,"brand_type":2,"nix_item_id":"53874418c58919142a541fb3","locale":"en_US"},{"food_name":"Goober
+        Grape Peanut Butter & Grape Jelly Stripes","serving_unit":"tbsp","nix_brand_id":"51db37b3176fe9790a8986d0","brand_name_item_name":"Smucker''s
+        Goober Grape Peanut Butter & Grape Jelly Stripes","serving_qty":3,"nf_calories":220,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/64ba65eec72f7b000824a48b.jpeg"},"brand_name":"Smucker''s","region":1,"brand_type":2,"nix_item_id":"64ba65edc72f7b000824a48a","locale":"en_US"},{"food_name":"Grape
+        Tomatoes","serving_unit":"cup","nix_brand_id":"51db37b9176fe9790a898bdd","brand_name_item_name":"Kroger
+        Grape Tomatoes","serving_qty":1,"nf_calories":32,"photo":{"thumb":"https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png","highres":null,"is_user_uploaded":false},"brand_name":"Kroger","region":1,"brand_type":2,"nix_item_id":"551468946b95bd75612aed43","locale":"en_US"},{"food_name":"100%
+        Grape Juice, Concord Grape","serving_unit":"fl oz","nix_brand_id":"51db37b0176fe9790a8983f2","brand_name_item_name":"Welch''s
+        100% Grape Juice, Concord Grape","serving_qty":8,"nf_calories":140,"photo":{"thumb":"https://assets.syndigo.com/1a200f82-3e60-4338-89d8-b897de21139f"},"brand_name":"Welch''s","region":1,"brand_type":2,"nix_item_id":"51d2fb40cc9bff111580db29","locale":"en_US"},{"food_name":"Concord
+        Grape, Jelly","serving_unit":"tbsp","nix_brand_id":"51db37b0176fe9790a8983f2","brand_name_item_name":"Welch''s
+        Concord Grape, Jelly","serving_qty":1,"nf_calories":50,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/54b925ac903fef576c61058f.jpeg"},"brand_name":"Welch''s","region":1,"brand_type":2,"nix_item_id":"54aae586f82caca9591d416b","locale":"en_US"},{"food_name":"Sparkling
+        Tonic, Classic Grape","serving_unit":"can","nix_brand_id":"5c84b88283417aa85756d32a","brand_name_item_name":"Olipop
+        Sparkling Tonic, Classic Grape","serving_qty":1,"nf_calories":45,"photo":{"thumb":"https://assets.syndigo.com/81dffcc4-c8c9-4467-8364-d9911fdf3eed"},"brand_name":"Olipop","region":1,"brand_type":2,"nix_item_id":"611528b5275c9700087ca929","locale":"en_US"},{"food_name":"Concord
+        Grape Spread","serving_unit":"tbsp","nix_brand_id":"51db37b0176fe9790a8983f2","brand_name_item_name":"Welch''s
+        Concord Grape Spread","serving_qty":1,"nf_calories":30,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/60a124a14e70250009649859.jpeg"},"brand_name":"Welch''s","region":1,"brand_type":2,"nix_item_id":"5481fbcd4ba6482674a57e2e","locale":"en_US"},{"food_name":"Concord  Grape
+        Jam","serving_unit":"tbsp","nix_brand_id":"51db37b0176fe9790a8983f2","brand_name_item_name":"Welch''s
+        Concord  Grape Jam","serving_qty":1,"nf_calories":50,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/547cdcd2d9fbbadf16c3a398.jpeg"},"brand_name":"Welch''s","region":1,"brand_type":2,"nix_item_id":"547cd584656e5cf516c7fe4b","locale":"en_US"},{"food_name":"Jelly,
+        Grape","serving_unit":"tbsp","nix_brand_id":"51db37b3176fe9790a8986d0","brand_name_item_name":"Smucker''s
+        Jelly, Grape","serving_qty":1,"nf_calories":50,"photo":{"thumb":"https://assets.syndigo.com/86a97c7b-7f63-4963-b4f0-4b16f11ea1ed"},"brand_name":"Smucker''s","region":1,"brand_type":2,"nix_item_id":"51c3cbc297c3e6d8d3b4e559","locale":"en_US"},{"food_name":"16
+        oz Cup of Red Grapes & Green Grapes","serving_unit":"serving","nix_brand_id":"624379051a4de2200897894c","brand_name_item_name":"Travel
+        Centers of America 16 oz Cup of Red Grapes & Green Grapes","serving_qty":1,"nf_calories":220,"photo":{"thumb":"https://d2eawub7utcl6.cloudfront.net/images/nix-apple-grey.png","highres":null,"is_user_uploaded":false},"brand_name":"Travel
+        Centers of America","region":1,"brand_type":1,"nix_item_id":"bd9d881539a68a4c68d06b21","locale":"en_US"},{"food_name":"Grape
+        G-Zero","serving_unit":"bottle","nix_brand_id":"51db37b5176fe9790a898843","brand_name_item_name":"Gatorade
+        Grape G-Zero","serving_qty":1,"nf_calories":5,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/5e3d138929ea4649517e8a76.jpeg"},"brand_name":"Gatorade","region":1,"brand_type":2,"nix_item_id":"5e3d138640d780ca62f5bb22","locale":"en_US"},{"food_name":"Energy
+        Drink, Grape Rush, Sparkling","serving_unit":"fl oz","nix_brand_id":"51db37b3176fe9790a89872f","brand_name_item_name":"Celsius
+        Energy Drink, Grape Rush, Sparkling","serving_qty":12,"nf_calories":10,"photo":{"thumb":"https://assets.syndigo.com/41b54862-d0d8-41d8-9a84-d2ae783c5d9b"},"brand_name":"Celsius","region":1,"brand_type":2,"nix_item_id":"581c327833dc573508daff72","locale":"en_US"},{"food_name":"Harvest
+        Grape Protein Infused Water","serving_unit":"bottle","nix_brand_id":"546e0eebb7887b7410c163b2","brand_name_item_name":"Protein
+        2O Harvest Grape Protein Infused Water","serving_qty":1,"nf_calories":60,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/5f64b8ec55774d6b22612a00.jpeg"},"brand_name":"Protein
+        2O","region":1,"brand_type":2,"nix_item_id":"559e4afe369981103ff9424c","locale":"en_US"},{"food_name":"PB
+        & Js Grape Soft Baked Peanut Butter Oat Crust with Grape Filling","serving_unit":"bar","nix_brand_id":"51db37bf176fe9790a898f4f","brand_name_item_name":"Bobo''s
+        PB & Js Grape Soft Baked Peanut Butter Oat Crust with Grape Filling","serving_qty":1,"nf_calories":230,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/6481baa6ec0b590008a79db5.jpeg"},"brand_name":"Bobo''s","region":1,"brand_type":2,"nix_item_id":"6481baa5ec0b590008a79db4","locale":"en_US"},{"food_name":"Sugar
+        Free Concord Grape Jam","serving_unit":"tbsp","nix_brand_id":"51db37b3176fe9790a8986d0","brand_name_item_name":"Smucker''s
+        Sugar Free Concord Grape Jam","serving_qty":1,"nf_calories":10,"photo":{"thumb":"https://nutritionix-api.s3.amazonaws.com/54762643bbd4fdf6606eb368.jpeg"},"brand_name":"Smucker''s","region":1,"brand_type":2,"nix_item_id":"51d2fcbacc9bff111580e5be","locale":"en_US"}]}'
+  recorded_at: Mon, 31 Jul 2023 21:23:46 GMT
+recorded_with: VCR 6.2.0

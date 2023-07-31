@@ -1,5 +1,3 @@
 class UserRecipesController < ApplicationController
-  def create
-    
-  end
+  def create; end
 end

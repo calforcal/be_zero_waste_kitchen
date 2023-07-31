@@ -62,7 +62,6 @@ describe 'Users API' do
         expect(user[:attributes]).to have_key(:uid)
         expect(user[:attributes][:uid]).to be_a(String)
 
-
         expect(user[:attributes]).to have_key(:stats)
         expect(user[:attributes][:stats]).to be_a Hash
 

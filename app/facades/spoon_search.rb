@@ -40,9 +40,11 @@ class SpoonSearch
     instructions = []
     instructions_hash = recipe[:analyzedInstructions].first
     if instructions_hash
-    instructions_hash[:steps].each do |step|
-      instructions << step[:step] if step
-    end
+      instructions_hash[:steps].each do |step|
+        instructions << step[:step] if step
+      end
+    else
+      saved_recipe.update(instructions: "see source")
     end
     saved_recipe.update(instructions: instructions.flatten,
                         cook_time: recipe[:readyInMinutes],
@@ -73,6 +75,8 @@ class SpoonSearch
       instructions_hash[:steps].each do |step|
         instructions << step[:step] if step
       end
+    else
+      saved_recipe.update(instructions: "see source")
     end
     recipe[:extendedIngredients]&.each do |ingredient|
       saved_recipe.ingredients.create!(name: ingredient[:name],

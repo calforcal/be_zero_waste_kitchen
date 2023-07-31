@@ -27,9 +27,9 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Sat, 29 Jul 2023 21:01:08 GMT
+      - Mon, 31 Jul 2023 00:28:22 GMT
       X-Amzn-Requestid:
-      - 485fea02-20c0-4441-a4c4-f3fd1e2a5984
+      - 36ed9238-3fee-4053-8b74-63bfe63cc980
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -37,23 +37,23 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I2CjLHNzvHcF4FA=
+      - I5z2DFIWPHcFdcA=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c57e14-57b19540290cb55d283df35a;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c70026-03b4082301b875f03f53dccc;Sampled=0;lineage=6ae1048e:0
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 c4c8de00fdd2495cb82daf882e1daacc.cloudfront.net (CloudFront)
+      - 1.1 d7484ceebc64d9cbda81209193465bc8.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - pjqlHiJAwOsYyyfKAZwmscanUfvGCUCJ7qWLUKe2-iPnf9NMtZ0Agw==
+      - ylJJhY97fHDYgdpjcAaoDdosgGQHQn-LpjS_KnHv1juC3tIPCtcI8Q==
     body:
       encoding: UTF-8
       string: "[]"
-  recorded_at: Sat, 29 Jul 2023 21:01:08 GMT
+  recorded_at: Mon, 31 Jul 2023 00:28:22 GMT
 - request:
     method: post
     uri: https://beta4.api.climatiq.io/estimate
@@ -93,9 +93,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=3600
       X-Served-By:
-      - cache-den8274-DEN
+      - cache-den8235-DEN
       Date:
-      - Sat, 29 Jul 2023 21:01:07 GMT
+      - Mon, 31 Jul 2023 00:28:21 GMT
     body:
       encoding: UTF-8
       string: '{"co2e":0.0,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
@@ -103,5 +103,5 @@ http_interactions:
         Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
         Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":0.0,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.0,"activity_unit":"short
         ton"},"audit_trail":"selector"}'
-  recorded_at: Sat, 29 Jul 2023 21:01:08 GMT
+  recorded_at: Mon, 31 Jul 2023 00:28:22 GMT
 recorded_with: VCR 6.2.0

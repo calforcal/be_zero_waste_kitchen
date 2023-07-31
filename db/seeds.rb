@@ -38,7 +38,7 @@ User.destroy_all
 
 
 
-user_1 = User.create!(uid: "123", name: "Michael C", email: "michael1@gmail.com")
+user_1 = User.create!(uid: "123")
 
 recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "123456789123456789", instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
 chicken = Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs')

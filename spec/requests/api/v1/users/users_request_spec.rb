@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe 'Users API' do
-  let!(:user_1) { User.create!(uid: '123', name: 'Michael C', email: 'michael@gmail.com') }
-  let!(:user_2) { User.create!(uid: '456', name: 'Carolyn C', email: 'carolyn@gmail.com') }
+  let!(:user_1) { User.create!(uid: '123') }
+  let!(:user_2) { User.create!(uid: '456') }
 
   let!(:recipe_1) do
     Recipe.create!(name: 'Chicken Parm', api_id: '123456789123456789',
-                   instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
+                   instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.uid, source_url: "/api/v1/users/#{user_1.id}")
   end
   let!(:chicken) { Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs') }
   let!(:cheese) { Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs') }
@@ -45,9 +45,9 @@ describe 'Users API' do
     user_1.saved_ingredients.create!(ingredient_name: eggs.name, unit_type: eggs.unit_type, units: eggs.units)
   end
 
-  describe 'Fetch One Merchant' do
+  describe 'Fetch One User' do
     describe 'happy paths' do
-      it 'can get one merchant', :vcr do
+      it 'can get one user', :vcr do
         get api_v1_user_path(user_1)
 
         expect(response).to be_successful
@@ -62,11 +62,6 @@ describe 'Users API' do
         expect(user[:attributes]).to have_key(:uid)
         expect(user[:attributes][:uid]).to be_a(String)
 
-        expect(user[:attributes]).to have_key(:name)
-        expect(user[:attributes][:name]).to be_a(String)
-
-        expect(user[:attributes]).to have_key(:email)
-        expect(user[:attributes][:email]).to be_a(String)
 
         expect(user[:attributes]).to have_key(:stats)
         expect(user[:attributes][:stats]).to be_a Hash
@@ -209,9 +204,7 @@ describe 'Users API' do
     describe 'happy paths' do
       it 'can create one merchant', :vcr do
         user_params = {
-          uid: '000',
-          name: 'Busta Rhymes',
-          email: 'busta@gmail.com'
+          uid: '000'
         }
 
         headers = { 'CONTENT_TYPE' => 'application/json' }
@@ -219,8 +212,6 @@ describe 'Users API' do
         created_user = User.last
 
         expect(created_user.uid).to eq(user_params[:uid])
-        expect(created_user.name).to eq(user_params[:name])
-        expect(created_user.email).to eq(user_params[:email])
       end
     end
   end

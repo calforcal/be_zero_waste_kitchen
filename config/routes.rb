@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       get '/recipes/search', to: 'search#index'
       resources :recipes
       resources :ingredients, only: %i[index]
+      resources 
     end
   end
 end

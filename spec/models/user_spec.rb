@@ -3,17 +3,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   describe 'validations' do
     it { should validate_presence_of :uid }
-    it { should validate_presence_of :name }
-    it { should validate_presence_of :email }
-    it { should validate_uniqueness_of :email }
   end
 
   describe 'instance methods' do
-    let!(:user_1) { User.create!(uid: '123', name: 'Michael C', email: 'michael@gmail.com') }
+    let!(:user_1) { User.create!(uid: '123') }
 
     let!(:recipe_1) do
-      Recipe.create!(name: 'Chicken Parm', api_id: '123456789123456789',
-                     instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
+      Recipe.create!(
+        name: 'Chicken Parm', api_id: '123456789123456789',
+                     instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: "user", source_url: "/api/v1/users/#{user_1.uid}")
     end
     let!(:chicken) { Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs') }
     let!(:cheese) { Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs') }

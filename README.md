@@ -56,9 +56,7 @@
 
 ```
 {
-  "uid": "string",
-  "name": "string",
-  "email": "string"
+  "uid": "string"
 }
 ```
 
@@ -81,7 +79,7 @@
 ```
 
 ### Create a Cooked Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=cooked’ </p>
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?cooked=true’ </p>
 <p> Example of the body details to be provided when creating a cooked recipe </p>
 
 ```
@@ -94,7 +92,7 @@
 ```
 
 ### Create a Saved Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=saved’ </p>
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?saved=true’ </p>
 <p> Example of the body details to be provided when creating a saved recipe </p>
 
 ```
@@ -103,6 +101,18 @@
   "recipe_id": "integer",
   "api_id": "string",
   "saved_status": "boolean"
+}
+```
+### Rate a Recip (user_recipes)
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?rating=5’ </p>
+<p> Example of the body details to be provided when creating a saved recipe. (Ratings are 1-5) </p>
+
+```
+{
+  "uid": "integer",
+  "recipe_id": "integer",
+  "api_id": "string",
+  "rating": "integer"
 }
 ```
 

@@ -1,6 +1,6 @@
 class UserSerializer
   include JSONAPI::Serializer
-  attributes :uid, :name, :email
+  attributes :uid
 
   attribute :stats do |object|
     object.user_stats

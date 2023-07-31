@@ -9,7 +9,7 @@ RSpec.describe SpoonSearch do
         expect(Ingredient.all.count).to eq(0)
         expect(RecipeIngredient.all.count).to eq(0)
 
-        query = 'potatoes onions'
+        query = 'potatoes, onions'
         SpoonSearch.new(ingredients: query).ingredient_search
         
         expect(Recipe.all.count).to_not eq(0)
@@ -46,7 +46,7 @@ RSpec.describe SpoonSearch do
         expect(Ingredient.all.count).to eq(0)
         expect(RecipeIngredient.all.count).to eq(0)
 
-        query = 'potatoes onions'
+        query = 'potatoes, onions'
         SpoonSearch.new(ingredients: query).ingredient_search_details
         
         expect(Recipe.all.count).to_not eq(0)
@@ -76,13 +76,63 @@ RSpec.describe SpoonSearch do
     end
 
     it 'will add details to recipes from name results' do 
-      recipe1 = Recipe.create!(name: "Potato Wedges", api_id: "1099404", image_url: "here is picture", user_submitted: false)
-      recipe1 = Recipe.create!(name: "Knishes", api_id: "648983", image_url: "here is picture", user_submitted: false)
-      recipe1 = Recipe.create!(name: "Potato Salad", api_id: "653611", image_url: "here is picture", user_submitted: false)
-      recipe1 = Recipe.create!(name: "Minestrone", api_id: "1234", image_url: "here is picture", user_submitted: false)
-      VCR.use_cassette('SpoonSearch/instance_methods/will add details to recipes from name results', match_requests_on: [:path]) do 
+      recipe1 = Recipe.create!(name: "Potato Wedges", api_id: "1099404", user_submitted: false)
+      
+      VCR.use_cassette('SpoonSearch/instance_methods/will_add_details_to_recipes_from_name_results', match_requests_on: [:path]) do 
         
+        SpoonSearch.new(api_id: recipe1.api_id).recipe_by_id_name_results
+
+        recipe1.reload
+
+        expect(recipe1.instructions).to be_an(Array)
+        expect(recipe1.cook_time).to be_an(Integer)
+        expect(recipe1.source_name).to be_a(String)
+        expect(recipe1.source_url).to be_a(String)
+      end
+    end
+
+    it 'will search by name and cache recipe details' do 
+      VCR.use_cassette('SpoonSearch/instance_methods/will_search_by_name_and_cache_recipe_details', match_requests_on: [:path]) do 
+        expect(Recipe.all.count).to eq(0)
+        expect(Ingredient.all.count).to eq(0)
+        expect(RecipeIngredient.all.count).to eq(0)
         
+        SpoonSearch.new(name: "garlic").name_search_details
+        
+        expect(Recipe.all.count > 0).to be(true)
+        expect(Ingredient.all.count > 0 ).to be(true)
+        expect(RecipeIngredient.all.count > 0 ).to be(true)
+
+        expect(Recipe.last.instructions).to be_an(Array)
+        expect(Recipe.last.name).to be_a(String)
+        expect(Recipe.last.api_id).to be_a(String)
+        expect(Recipe.last.image_url).to be_a(String)
+        expect(Recipe.last.cook_time).to be_an(Integer)
+        expect(Recipe.last.source_name).to be_a(String)
+        expect(Recipe.last.source_url).to be_a(String)
+        expect(Recipe.last.user_submitted).to be(false)
+      end
+    end
+    it 'will search by ingredients and cache recipe details' do 
+      VCR.use_cassette('SpoonSearch/instance_methods/will_search_by_ingredients_and_cache_recipe_details', match_requests_on: [:path]) do 
+        expect(Recipe.all.count).to eq(0)
+        expect(Ingredient.all.count).to eq(0)
+        expect(RecipeIngredient.all.count).to eq(0)
+        
+        SpoonSearch.new(ingredients: 'garlic, bread').ingredient_search_details
+        
+        expect(Recipe.all.count > 0).to be(true)
+        expect(Ingredient.all.count > 0 ).to be(true)
+        expect(RecipeIngredient.all.count > 0 ).to be(true)
+
+        expect(Recipe.last.instructions).to be_an(Array)
+        expect(Recipe.last.name).to be_a(String)
+        expect(Recipe.last.api_id).to be_a(String)
+        expect(Recipe.last.image_url).to be_a(String)
+        expect(Recipe.last.cook_time).to be_an(Integer)
+        expect(Recipe.last.source_name).to be_a(String)
+        expect(Recipe.last.source_url).to be_a(String)
+        expect(Recipe.last.user_submitted).to be(false)
       end
     end
   end

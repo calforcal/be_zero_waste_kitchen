@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.api-ninjas.com/v1/nutrition?query=1%20lbs%20Chicken
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - X-Api-Key
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '258'
+      Connection:
+      - keep-alive
+      Date:
+      - Mon, 31 Jul 2023 00:27:50 GMT
+      X-Amzn-Requestid:
+      - 5419c17e-5691-42ae-8228-9e19d6009f82
+      Access-Control-Allow-Origin:
+      - "*"
+      Allow:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - "*"
+      X-Amz-Apigw-Id:
+      - I5zxGFMOPHcFhoQ=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64c70006-2f308f4540c1768914cc3cc0;Sampled=0;lineage=6ae1048e:0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 e62d5638b40841e7b8480ae5876ef040.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P1
+      X-Amz-Cf-Id:
+      - fCisfbQ8hdR68hA3ScVrLVey2r0q1BdEsiqr-J8lraiQMXXTb2Y0lQ==
+    body:
+      encoding: UTF-8
+      string: '[{"name": "chicken", "calories": 1009.9, "serving_size_g": 453.592,
+        "fat_total_g": 58.5, "fat_saturated_g": 16.6, "protein_g": 107.6, "sodium_mg":
+        327, "potassium_mg": 812, "cholesterol_mg": 417, "carbohydrates_total_g":
+        0.2, "fiber_g": 0.0, "sugar_g": 0.0}]'
+  recorded_at: Mon, 31 Jul 2023 00:27:50 GMT
+recorded_with: VCR 6.2.0

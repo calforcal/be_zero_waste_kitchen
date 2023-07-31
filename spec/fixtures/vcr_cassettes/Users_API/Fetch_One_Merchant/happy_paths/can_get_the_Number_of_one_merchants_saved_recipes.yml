@@ -27,9 +27,9 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
-      - Sun, 30 Jul 2023 20:37:51 GMT
+      - Sat, 29 Jul 2023 21:41:45 GMT
       X-Amzn-Requestid:
-      - cd9047d3-e333-4f4d-bbf1-478c5382811b
+      - 76ebbbe0-e3ed-4a98-bd40-1450d0dbdb38
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -37,19 +37,19 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I5SE_EjZvHcFr5w=
+      - I2IfzFhAvHcFQZA=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c6ca1f-22070d3656cb1db14d0c1be8;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c58798-2d3e749978c66ece13f2d195;Sampled=0;lineage=6ae1048e:0
       X-Cache:
       - Miss from cloudfront
       Via:
-      - 1.1 1c24aee52487b0940693b93c42adc29c.cloudfront.net (CloudFront)
+      - 1.1 a1fb8be6c85edc28c20536da81db5204.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - _4UnQ4pBrXxDuZAFsZWd00W6ekjHbZRkdTW_Z1q76TNW2WEHiLsCrA==
+      - ltK3UlmrjbEHlJ1eygS0TqaYhi2NSo6zbqTieNw_jayDLoRUvg7RSA==
     body:
       encoding: UTF-8
       string: '[{"name": "chicken", "calories": 3784.9, "serving_size_g": 1700.0,
@@ -66,7 +66,7 @@ http_interactions:
         9071.84, "fat_total_g": 849.8, "fat_saturated_g": 283.6, "protein_g": 1142.0,
         "sodium_mg": 13034, "potassium_mg": 18147, "cholesterol_mg": 33888, "carbohydrates_total_g":
         64.9, "fiber_g": 0.0, "sugar_g": 34.1}]'
-  recorded_at: Sun, 30 Jul 2023 20:37:51 GMT
+  recorded_at: Sat, 29 Jul 2023 21:41:45 GMT
 - request:
     method: post
     uri: https://beta4.api.climatiq.io/estimate
@@ -106,9 +106,9 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=3600
       X-Served-By:
-      - cache-den8272-DEN
+      - cache-den8245-DEN
       Date:
-      - Sun, 30 Jul 2023 20:37:51 GMT
+      - Sat, 29 Jul 2023 21:41:45 GMT
     body:
       encoding: UTF-8
       string: '{"co2e":14.136868307551117,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
@@ -116,5 +116,5 @@ http_interactions:
         Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
         Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":14.136868307551117,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.024373910875088133,"activity_unit":"short
         ton"},"audit_trail":"selector"}'
-  recorded_at: Sun, 30 Jul 2023 20:37:51 GMT
+  recorded_at: Sat, 29 Jul 2023 21:41:45 GMT
 recorded_with: VCR 6.2.0

@@ -7,8 +7,6 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     headers:
-      X-Api-Key:
-      - X-Api-Key
       User-Agent:
       - Faraday v2.7.10
       Accept-Encoding:
@@ -17,19 +15,19 @@ http_interactions:
       - "*/*"
   response:
     status:
-      code: 200
-      message: OK
+      code: 400
+      message: Bad Request
     headers:
       Content-Type:
       - application/json
       Content-Length:
-      - '1065'
+      - '29'
       Connection:
       - keep-alive
       Date:
-      - Sun, 30 Jul 2023 20:37:46 GMT
+      - Sat, 29 Jul 2023 22:14:10 GMT
       X-Amzn-Requestid:
-      - 9e933116-f4df-417d-ada6-71aef9045c7c
+      - 8cc057d2-8fb3-48cf-9cc9-5c7d26bb1081
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -37,84 +35,21 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
-      - I5SEOHiQPHcFpCw=
+      - I2NP8H0iPHcF3dA=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
       X-Amzn-Trace-Id:
-      - Root=1-64c6ca1a-467bfd9419d9d9e204385171;Sampled=0;lineage=6ae1048e:0
+      - Root=1-64c58f32-36ba801c0e2d3d6c18e30fb5;Sampled=0;lineage=6ae1048e:0
       X-Cache:
-      - Miss from cloudfront
+      - Error from cloudfront
       Via:
-      - 1.1 a1fb8be6c85edc28c20536da81db5204.cloudfront.net (CloudFront)
+      - 1.1 d1f45df4933065053cea3fd574dc6f20.cloudfront.net (CloudFront)
       X-Amz-Cf-Pop:
       - DEN52-P1
       X-Amz-Cf-Id:
-      - PWoJfU6IQz16Pexo1-h1ZcVvgDZoQl-xuMawU4zbt2WlZHfCrND82A==
+      - Q0FCmgk_pPeoz57Lob9M1XY3EyvWI9TVeHr9JYHhLIMcBO-PH-18jA==
     body:
       encoding: UTF-8
-      string: '[{"name": "chicken", "calories": 3784.9, "serving_size_g": 1700.0,
-        "fat_total_g": 219.3, "fat_saturated_g": 62.2, "protein_g": 403.4, "sodium_mg":
-        1228, "potassium_mg": 3045, "cholesterol_mg": 1566, "carbohydrates_total_g":
-        0.8, "fiber_g": 0.0, "sugar_g": 0.0}, {"name": "cheese", "calories": 8933.5,
-        "serving_size_g": 2267.96, "fat_total_g": 749.1, "fat_saturated_g": 429.2,
-        "protein_g": 515.9, "sodium_mg": 15008, "potassium_mg": 10431, "cholesterol_mg":
-        2271, "carbohydrates_total_g": 71.8, "fiber_g": 0.0, "sugar_g": 10.6}, {"name":
-        "ground beef", "calories": 25270.6, "serving_size_g": 9071.84, "fat_total_g":
-        1551.4, "fat_saturated_g": 587.8, "protein_g": 2470.2, "sodium_mg": 8342,
-        "potassium_mg": 20287, "cholesterol_mg": 8177, "carbohydrates_total_g": 0.0,
-        "fiber_g": 0.0, "sugar_g": 0.0}, {"name": "eggs", "calories": 13090.9, "serving_size_g":
-        9071.84, "fat_total_g": 849.8, "fat_saturated_g": 283.6, "protein_g": 1142.0,
-        "sodium_mg": 13034, "potassium_mg": 18147, "cholesterol_mg": 33888, "carbohydrates_total_g":
-        64.9, "fiber_g": 0.0, "sugar_g": 34.1}]'
-  recorded_at: Sun, 30 Jul 2023 20:37:46 GMT
-- request:
-    method: post
-    uri: https://beta4.api.climatiq.io/estimate
-    body:
-      encoding: UTF-8
-      string: '{"emission_factor":{"activity_id":"waste_type_food_waste-disposal_method_landfilled","source":"EPA","region":"US","year":2022,"source_lca_activity":"end_of_life","data_version":"2.2"},"parameters":{"weight":22111.64,"weight_unit":"g"}}'
-    headers:
-      Authorization:
-      - Authorization
-      'Content-Type: ':
-      - application/json
-      User-Agent:
-      - Faraday v2.7.10
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '691'
-      Content-Type:
-      - application/json
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - private, s-maxage=0, max-age=600, must-revalidate
-      X-Content-Type-Options:
-      - nosniff
-      Content-Security-Policy:
-      - frame-ancestors 'none'
-      Strict-Transport-Security:
-      - max-age=3600
-      X-Served-By:
-      - cache-den8226-DEN
-      Date:
-      - Sun, 30 Jul 2023 20:37:46 GMT
-    body:
-      encoding: UTF-8
-      string: '{"co2e":14.136868307551117,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
-        Waste - Landfilled","activity_id":"waste_type_food_waste-disposal_method_landfilled","id":"163972ef-d865-4bbe-ab3b-f8b2465cf825","access_type":"public","source":"EPA","source_dataset":"GHG
-        Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
-        Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":14.136868307551117,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.024373910875088133,"activity_unit":"short
-        ton"},"audit_trail":"selector"}'
-  recorded_at: Sun, 30 Jul 2023 20:37:47 GMT
+      string: '{"error": "Missing API Key."}'
+  recorded_at: Sat, 29 Jul 2023 22:14:10 GMT
 recorded_with: VCR 6.2.0

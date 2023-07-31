@@ -27,9 +27,15 @@ http_interactions:
       Connection:
       - keep-alive
       Date:
+<<<<<<< HEAD
       - Sun, 30 Jul 2023 20:37:47 GMT
       X-Amzn-Requestid:
       - 6d5d5cac-d6fa-429c-abe9-4ae27edb40d8
+=======
+      - Sat, 29 Jul 2023 21:01:02 GMT
+      X-Amzn-Requestid:
+      - cc76cb28-f8a8-46ec-ab07-a560f5c2e60c
+>>>>>>> 03d0b3fe4db4055a55ada1e6b6368b9e92d54252
       Access-Control-Allow-Origin:
       - "*"
       Allow:
@@ -37,6 +43,7 @@ http_interactions:
       Access-Control-Allow-Headers:
       - "*"
       X-Amz-Apigw-Id:
+<<<<<<< HEAD
       - I5SEUF80vHcFhAQ=
       Access-Control-Allow-Methods:
       - GET, OPTIONS, POST
@@ -50,6 +57,21 @@ http_interactions:
       - DEN52-P1
       X-Amz-Cf-Id:
       - PanUFyiGMayx88lHcmp1dHlo8SuO6zk98AFzjR3PQyhuf4GNKs4_xQ==
+=======
+      - I2CiPFG3PHcFwRA=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64c57e0e-2875f19932e286be7eecffbc;Sampled=0;lineage=6ae1048e:0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 89771419757f75b08f6c8fd411f8ef54.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P1
+      X-Amz-Cf-Id:
+      - EUx3c5Sdhmpd6hkene1_8h3ww-3JBUYTVIcYV6AvXu9-ZMAMSsZFoQ==
+>>>>>>> 03d0b3fe4db4055a55ada1e6b6368b9e92d54252
     body:
       encoding: UTF-8
       string: '[{"name": "chicken", "calories": 3784.9, "serving_size_g": 1700.0,
@@ -66,7 +88,11 @@ http_interactions:
         9071.84, "fat_total_g": 849.8, "fat_saturated_g": 283.6, "protein_g": 1142.0,
         "sodium_mg": 13034, "potassium_mg": 18147, "cholesterol_mg": 33888, "carbohydrates_total_g":
         64.9, "fiber_g": 0.0, "sugar_g": 34.1}]'
+<<<<<<< HEAD
   recorded_at: Sun, 30 Jul 2023 20:37:47 GMT
+=======
+  recorded_at: Sat, 29 Jul 2023 21:01:02 GMT
+>>>>>>> 03d0b3fe4db4055a55ada1e6b6368b9e92d54252
 - request:
     method: post
     uri: https://beta4.api.climatiq.io/estimate
@@ -106,9 +132,15 @@ http_interactions:
       Strict-Transport-Security:
       - max-age=3600
       X-Served-By:
+<<<<<<< HEAD
       - cache-den8234-DEN
       Date:
       - Sun, 30 Jul 2023 20:37:47 GMT
+=======
+      - cache-den8245-DEN
+      Date:
+      - Sat, 29 Jul 2023 21:01:04 GMT
+>>>>>>> 03d0b3fe4db4055a55ada1e6b6368b9e92d54252
     body:
       encoding: UTF-8
       string: '{"co2e":14.136868307551117,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
@@ -116,5 +148,9 @@ http_interactions:
         Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
         Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":14.136868307551117,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.024373910875088133,"activity_unit":"short
         ton"},"audit_trail":"selector"}'
+<<<<<<< HEAD
   recorded_at: Sun, 30 Jul 2023 20:37:48 GMT
+=======
+  recorded_at: Sat, 29 Jul 2023 21:01:04 GMT
+>>>>>>> 03d0b3fe4db4055a55ada1e6b6368b9e92d54252
 recorded_with: VCR 6.2.0

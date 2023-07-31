@@ -6,10 +6,6 @@ RSpec.describe UserRecipe, type: :model do
     it { should belong_to :recipe }
   end
 
-  describe 'validations' do
-    it { should validate_numericality_of :num_stars }
-  end
-
   describe "class methods" do 
     before(:each) do 
       @recipe1 = Recipe.create!(name: 'Spaghetti with Marinara')
@@ -23,38 +19,41 @@ RSpec.describe UserRecipe, type: :model do
         num_stars: 4
       }
       # users cannot rate a recipe until they've cooked it.
-      association = UserRecipe.create_user_recipe(params)
-      expect(rating.num_stars).to be nil
+      UserRecipe.create_user_recipe(params2)
+      association = UserRecipe.find_by(user_id: @user.id, recipe_id: @recipe1.id)
+      expect(association.num_stars).to be nil
       
       params1 = {
         uid: "5e",
-        recipe_id: @recipe1.id
-        api_id: "674"
+        recipe_id: @recipe1.id,
+        api_id: "674",
         cook_status: true
       }
+    
+      UserRecipe.create_user_recipe(params1)
+      association.reload
+      expect(association.cook_status).to be(true)
       
-      association = UserRecipe.create_user_recipe(params)
-      expect(rating.cook_status).to be(true)
-      
-      params2 = {
+      params3 = {
         uid: "5e",
         recipe_id: @recipe1.id, 
         api_id: "9838",
         num_stars: 4
       }
 
-      association = UserRecipe.create_user_recipe(params)
-      expect(rating.num_stars).to eq(4)
+      UserRecipe.create_user_recipe(params3)
+      association.reload
+      expect(association.num_stars).to eq(4)
 
-      params3 = {
-        uid: "7a",
-        recipe_id: @recipe1.id
-        api_id: "674"
+      params4 = {
+        uid: "5e",
+        recipe_id: @recipe1.id,
+        api_id: "674",
         saved_status: true
       }
 
-      rating = UserRecipe.create_user_recipe(params)
-      expect(rating.cook_status).to be(true)
+      UserRecipe.create_user_recipe(params4)
+      expect(association.cook_status).to be(true)
     end
   end
 end

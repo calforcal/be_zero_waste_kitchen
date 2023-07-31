@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Recipe API' do
 
-  let!(:user_1) { User.create!(uid: '123', name: 'Michael C', email: 'michael@gmail.com') }
+  let!(:user_1) { User.create!(uid: '123') }
 
   describe 'Create One Recipe' do
     describe 'happy paths' do
@@ -12,7 +12,7 @@ describe 'Recipe API' do
           instructions: "1. Rinse spinach and lettuce, 2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off",
           cook_time: 10,
           public_status: true,
-          source_name: user_1.name,
+          source_name: user_1.uid,
           source_url: api_v1_user_path(user_1),
           user_submitted: true
         })
@@ -37,7 +37,7 @@ describe 'Recipe API' do
           instructions: "1. Rinse spinach and lettuce,2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off",
           cook_time: 10,
           public_status: true,
-          source_name: user_1.name,
+          source_name: user_1.uid,
           source_url: api_v1_user_path(user_1),
           user_submitted: true
         })
@@ -95,7 +95,7 @@ describe 'Recipe API' do
           instructions: "1. Rinse spinach and lettuce, 2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off",
           cook_time: 10,
           public_status: true,
-          source_name: user_1.name,
+          source_name: user_1.uid,
           source_url: api_v1_user_path(user_1),
           user_submitted: true
         })

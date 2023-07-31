@@ -31,7 +31,7 @@ class SpoonSearch
         recipes_created << recipe_created
       end
     end
-    x = Recipe.ingredient_search_details(@ingredients)
+    Recipe.ingredient_search_details(@ingredients)
   end
 
   def recipe_by_id_ingredients_results
@@ -49,7 +49,6 @@ class SpoonSearch
                         source_name: recipe[:sourceName],
                         source_url: recipe[:sourceUrl])
     saved_recipe
-    require 'pry'; binding.pry
   end
 
   def name_search

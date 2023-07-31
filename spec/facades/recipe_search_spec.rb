@@ -32,7 +32,7 @@ RSpec.describe RecipeSearch do
     
     it "search with ingredients" do 
       VCR.use_cassette("RecipeSearch/instance_methods/search_with_ingredients", match_requests_on: [:path]) do 
-        recipe_3 = Recipe.create!(name: 'Pasta', api_id: "1234567891234567892", instructions: ['1. Cook Pasta', '2. Cover in butter and cheese', '3. Yum!'], image_url: 'yummy pasta url', cook_time: 10, public_status: true, source_name: 'Italian Chef', source_url: 'Italian Chef Web')
+        recipe_3 = Recipe.create!(name: 'Pasta', api_id: "1234567891234567892", image_url: 'yummy pasta url', cook_time: 10, public_status: true, source_name: 'Italian Chef', source_url: 'Italian Chef Web')
         pasta = recipe_3.ingredients.create!(name: 'pasta', units: 1.0, unit_type: 'lbs')
         butter = recipe_3.ingredients.create!(name: 'butter', units: 2, unit_type: 'oz')
         
@@ -41,7 +41,7 @@ RSpec.describe RecipeSearch do
         expect(Ingredient.all.count).to eq(2)
         expect(RecipeIngredient.all.count).to eq(2)
   
-        params = {ingredients: "butter,+pasta"}
+        params = {ingredients: "garlic,+tomatoes"}
         search = RecipeSearch.new(params)
 
         search.search

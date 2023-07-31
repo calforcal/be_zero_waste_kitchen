@@ -6,7 +6,6 @@ class UserRecipe < ApplicationRecord
     user = User.find_by(uid: params[:uid])
     recipe = Recipe.find(params[:recipe_id])
     association = UserRecipe.find_by(user_id: user.id, recipe_id: recipe.id)
-
     if params[:num_stars] && association&.cook_status == true
       association.update(num_stars: params[:num_stars])
   #  figure out how to handle sad path if not yet cooked

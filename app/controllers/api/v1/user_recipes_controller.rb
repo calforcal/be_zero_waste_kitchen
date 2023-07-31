@@ -1,4 +1,4 @@
-class UserRecipesController < ApplicationController
+class Api::V1::UserRecipesController < ApplicationController
   def create
     UserRecipe.create_user_recipe(params)
   end

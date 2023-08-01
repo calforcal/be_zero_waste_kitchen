@@ -19,28 +19,28 @@
         "lions_saved": "integer",
         "recipes_cooked": "integer",
         "recipes_created": "integer"
-      },
+      }
       "cooked_recipes": [
         {
           "name": "string",
           "api_id": "string",
           "id": "integer"
         }
-      ],
+      ]
       "created_recipes": [
         {
           "name": "string",
           "api_id": "string",
           "id": "integer"
         }
-      ],
+      ]
       "saved_recipes": [
         {
           "name": "string",
           "api_id": "string",
           "id": "integer"
         }
-      ],
+      ]
       "num_cooked_recipes": "integer",
       "num_created_recipes": "integer",
       "num_saved_recipes": "integer"
@@ -74,7 +74,20 @@
   "source_name": "string",
   "source_url": "string",
   "user_submitted": "boolean",
-  "api_id": "string"
+  "api_id": "string",
+  "uid": "string",
+  "ingredients": [
+    {
+      "name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    },
+    {
+      "name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    }
+  ]
 }
 ```
 
@@ -84,10 +97,27 @@
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer",
   "api_id": "string",
   "cook_status": "boolean"
+}
+```
+
+### Create Saved Ingredients (user_ingredients)
+<p> POST ‘/api/v1/user/:user_id/ingredients’ </p>
+<p> Example of the body details to be provided when creating a saved recipe </p>
+
+```
+{
+  "uid": "string",
+  "ingredients: [
+    {
+      "ingredient_name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    }
+  ]
 }
 ```
 
@@ -97,7 +127,7 @@
 
 ```
 {
-  "user_id": "integer",
+  "uid": "integer",
   "recipe_id": "integer",
   "api_id": "string",
   "saved_status": "boolean"
@@ -109,7 +139,7 @@
 
 ```
 {
-  "uid": "integer",
+  "uid": "string",
   "recipe_id": "integer",
   "api_id": "string",
   "num_stars": "integer"
@@ -122,7 +152,7 @@
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer",
   "api_id": "string",
   "cook_status": "boolean",
@@ -136,7 +166,7 @@
 
 ```
 {
-  "id": "integer",
+  "uid": "string",
   "name": "string",
   "email": "string"
 }
@@ -148,7 +178,7 @@
 
 ```
 {
-  "id": "string",
+  "id": "integer",
   "type": "string",
   "attributes": {
     "image_url": "string",
@@ -195,7 +225,7 @@
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer"
 }
 ```

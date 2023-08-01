@@ -11,7 +11,8 @@ RSpec.describe User, type: :model do
     let!(:recipe_1) do
       Recipe.create!(
         name: 'Chicken Parm', api_id: '123456789123456789',
-                     instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: "user", source_url: "/api/v1/users/#{user_1.uid}")
+        instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: 'user', source_url: "/api/v1/users/#{user_1.uid}"
+      )
     end
     let!(:chicken) { Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs') }
     let!(:cheese) { Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs') }
@@ -85,13 +86,13 @@ RSpec.describe User, type: :model do
     end
 
     describe '#num_recipes_saved' do
-    it 'can return the number of recipes a user has saved' do
-      expect(Recipe.all.count).to eq(3)
-      expect(user_1.recipes.count).to eq(2)
-      
-      expect(user_1.num_recipes_saved).to eq(2)
+      it 'can return the number of recipes a user has saved' do
+        expect(Recipe.all.count).to eq(3)
+        expect(user_1.recipes.count).to eq(2)
+
+        expect(user_1.num_recipes_saved).to eq(2)
+      end
     end
-  end
 
     describe '#user_stats' do
       it 'can return a condensed version of all user stats', :vcr do
@@ -124,16 +125,16 @@ RSpec.describe User, type: :model do
     end
 
     describe '#recipes_saved' do
-    it 'can return the recipes a user has saved' do
-      expect(Recipe.all.count).to eq(3)
-      expect(user_1.recipes.count).to eq(2)
+      it 'can return the recipes a user has saved' do
+        expect(Recipe.all.count).to eq(3)
+        expect(user_1.recipes.count).to eq(2)
 
-      expect(user_1.recipes_saved.first.id).to eq(recipe_1.id)
-      expect(user_1.recipes_saved.first.name).to eq(recipe_1.name)
+        expect(user_1.recipes_saved.first.id).to eq(recipe_1.id)
+        expect(user_1.recipes_saved.first.name).to eq(recipe_1.name)
 
-      expect(user_1.recipes_saved.second.id).to eq(recipe_2.id)
-      expect(user_1.recipes_saved.second.name).to eq(recipe_2.name)
+        expect(user_1.recipes_saved.second.id).to eq(recipe_2.id)
+        expect(user_1.recipes_saved.second.name).to eq(recipe_2.name)
+      end
     end
-  end
   end
 end

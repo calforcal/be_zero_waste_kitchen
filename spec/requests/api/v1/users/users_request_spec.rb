@@ -62,7 +62,6 @@ describe 'Users API' do
         expect(user[:attributes]).to have_key(:uid)
         expect(user[:attributes][:uid]).to be_a(String)
 
-
         expect(user[:attributes]).to have_key(:stats)
         expect(user[:attributes][:stats]).to be_a Hash
 
@@ -200,9 +199,9 @@ describe 'Users API' do
     end
   end
 
-  describe 'Create One Merchant' do
+  describe 'Create One User' do
     describe 'happy paths' do
-      it 'can create one merchant', :vcr do
+      it 'can create one user', :vcr do
         user_params = {
           uid: '000'
         }

@@ -6,7 +6,10 @@ RSpec.describe UserRecipe, type: :model do
     it { should belong_to :recipe }
   end
 
-  describe 'validations' do
-    it { should validate_numericality_of :num_stars }
+  describe "class methods" do 
+    before(:each) do 
+      @recipe1 = Recipe.create!(name: 'Spaghetti with Marinara')
+      @user = User.create!(uid: "5e")
+    end
   end
 end

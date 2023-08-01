@@ -13,7 +13,7 @@ class User < ApplicationRecord
   end
 
   def recipes_saved
-    recipes.select("recipes.name", "recipes.api_id", "recipes.id").where("user_recipes.saved_status = ?", "true")
+    recipes.select('recipes.name', 'recipes.api_id', 'recipes.id').where('user_recipes.saved_status = ?', 'true')
   end
 
   def num_recipes_cooked
@@ -25,7 +25,7 @@ class User < ApplicationRecord
   end
 
   def num_recipes_saved
-    recipes.select("recipes.name").where("user_recipes.saved_status = ?", "true").count
+    recipes.select('recipes.name').where('user_recipes.saved_status = ?', 'true').count
   end
 
   def emissions_reduction

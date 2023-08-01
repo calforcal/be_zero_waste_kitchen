@@ -43,7 +43,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-
   # This option will default to `:apply_to_host_groups` in RSpec 4 (and will
   # have no way to turn it off -- the option exists only for backwards
   # compatibility in RSpec 3). It causes shared context metadata to be
@@ -112,7 +111,6 @@ def recipe_search_data_ingredients
   @recipe11 = Recipe.create!(name: 'Pesto Sauce')
   @recipe12 = Recipe.create!(name: 'Caldo Tlalpeno')
 
-
   @recipe1.ingredients.create!(name: 'spaghetti', units: 1, unit_type: 'box')
   @recipe1.ingredients.create!(name: 'sauce', units: 1, unit_type: 'can')
   @recipe1.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
@@ -130,11 +128,11 @@ def recipe_search_data_ingredients
   @recipe4.ingredients.create!(name: 'pasta', units: 1, unit_type: 'cup')
   @recipe4.ingredients.create!(name: 'celery', units: 1, unit_type: 'cup')
   @recipe4.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
-  
+
   @recipe5.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
   @recipe5.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
   @recipe5.ingredients.create!(name: 'epazote', units: 1, unit_type: 'can')
-  
+
   @recipe6.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
   @recipe6.ingredients.create!(name: 'potatoes', units: 1, unit_type: 'can')
   @recipe6.ingredients.create!(name: 'cashews', units: 1, unit_type: 'can')
@@ -160,7 +158,7 @@ def recipe_search_data_ingredients
   @recipe11.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
   @recipe11.ingredients.create!(name: 'basil', units: 1, unit_type: 'can')
   @recipe11.ingredients.create!(name: 'silken tofu', units: 1, unit_type: 'can')
-  
+
   @recipe12.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
   @recipe12.ingredients.create!(name: 'lime', units: 1, unit_type: 'can')
   @recipe12.ingredients.create!(name: 'chipotle chile', units: 1, unit_type: 'can')

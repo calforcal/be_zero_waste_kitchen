@@ -1,5 +1,5 @@
 class RemoveColumnsFromUsers < ActiveRecord::Migration[7.0]
-  def up 
+  def up
     remove_column :users, :name
     remove_column :users, :email
   end

@@ -11,7 +11,7 @@ class Recipe < ApplicationRecord
   end
 
   def self.ingredient_search_details(ingredients)
-    ingr_array = ingredients.split(",+")
+    ingr_array = ingredients.split(',+')
     find_by_sql(["SELECT recipes.id, recipes.name, recipes.api_id from recipes
       JOIN recipe_ingredients ON recipes.id = recipe_ingredients.recipe_id
       JOIN ingredients ON recipe_ingredients.ingredient_id = ingredients.id

@@ -1,6 +1,7 @@
 class Api::V1::UsersController < ApplicationController
   def show
-    render json: UserSerializer.new(User.find(params[:id]))
+    user = User.find_or_create_by(uid: params[:id])
+    render json: UserSerializer.new(user)
   end
 
   def create
@@ -10,6 +11,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:uid, :name, :email)
+    params.require(:user).permit(:uid)
   end
 end

@@ -2,7 +2,7 @@ class RecipeSearch
   attr_reader :name,
               :ingredients
   def initialize(params = {})
-    @name = params[:name]
+    @name = params[:search]
     @ingredients = params[:ingredients]
   end
 

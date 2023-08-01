@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe RecipeSearch do
   describe 'initialize' do
     it 'has attributes' do
-      search = RecipeSearch.new({ name: 'taco salad', ingredients: ['taco shells', 'tomatoes', 'onions'] })
+      search = RecipeSearch.new({ search: 'taco salad', ingredients: ['taco shells', 'tomatoes', 'onions'] })
 
       expect(search.name).to eq('taco salad')
       expect(search.ingredients).to be_an(Array)
@@ -18,7 +18,7 @@ RSpec.describe RecipeSearch do
         expect(Ingredient.all.count).to eq(0)
         expect(RecipeIngredient.all.count).to eq(0)
 
-        params = { name: 'tacos' }
+        params = { search: 'tacos' }
         search = RecipeSearch.new(params)
         search.search
 
@@ -60,7 +60,7 @@ RSpec.describe RecipeSearch do
       recipe_search_data_name
       recipe_search_data_ingredients
 
-      params = { name: 'gaRlic' }
+      params = { search: 'gaRlic' }
 
       expect(RecipeSearch.new(params).search.count).to eq(12)
 

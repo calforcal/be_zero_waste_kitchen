@@ -247,7 +247,7 @@
 ```
 
 ### Fetch searched recipes --> by Name
-<p> GET ‘/api/v1/recipes/search?name=query%string’ </p>
+<p> GET ‘/api/v1/recipes/search?search=query%string’ </p>
 <p> Example of a response from the Search (by name) resource </p>
 
 
@@ -274,7 +274,7 @@
 
 
 ### Fetch searched recipes --> by Ingredients
-<p> GET ‘/api/v1/recipes/search?ingredient=query%string,+query’ </p>
+<p> GET ‘/api/v1/recipes/search?ingredients=query%string,+query’ </p>
 <p> Example of a response from the Search (by ingredients(s) ) resource </p>
 
 

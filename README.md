@@ -56,9 +56,7 @@
 
 ```
 {
-  "uid": "string",
-  "name": "string",
-  "email": "string"
+  "uid": "string"
 }
 ```
 
@@ -81,7 +79,7 @@
 ```
 
 ### Create a Cooked Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=cooked’ </p>
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
 <p> Example of the body details to be provided when creating a cooked recipe </p>
 
 ```
@@ -94,7 +92,7 @@
 ```
 
 ### Create a Saved Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=saved’ </p>
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
 <p> Example of the body details to be provided when creating a saved recipe </p>
 
 ```
@@ -105,9 +103,21 @@
   "saved_status": "boolean"
 }
 ```
+### Rate a Recipe (user_recipes)
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
+<p> Example of the body details to be provided when creating a saved recipe. (Ratings are 1-5) </p>
+
+```
+{
+  "uid": "integer",
+  "recipe_id": "integer",
+  "api_id": "string",
+  "num_stars": "integer"
+}
+```
 
 ### Update a Cooked Recipe (user_recipes)
-<p> PATCH ‘/api/v1/user/:user_id/recipes/:recipe_id?value=rate’ </p>
+<p> PATCH ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
 <p> Example of the body details to be provided when updating (rating) a cooked recipe </p>
 
 ```

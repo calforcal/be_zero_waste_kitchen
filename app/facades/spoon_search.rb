@@ -13,23 +13,23 @@ class SpoonSearch
     recipes = spoon_service.recipes_by_ingredients(@ingredients)
     recipes_created = []
     recipes.map do |recipe|
-      if !Recipe.find_by(api_id: recipe[:id].to_s)
-        recipe_created = Recipe.create!(name: recipe[:title],
-                                        api_id: recipe[:id].to_s,
-                                        image_url: recipe[:image],
-                                        user_submitted: false)
-        recipe[:usedIngredients].map do |ingredient|
+      next if Recipe.find_by(api_id: recipe[:id].to_s)
+
+      recipe_created = Recipe.create!(name: recipe[:title],
+                                      api_id: recipe[:id].to_s,
+                                      image_url: recipe[:image],
+                                      user_submitted: false)
+      recipe[:usedIngredients].map do |ingredient|
+        recipe_created.ingredients.create!(name: ingredient[:name],
+                                           unit_type: ingredient[:unitShort],
+                                           units: ingredient[:amount])
+        recipe[:missedIngredients].map do |ingredient|
           recipe_created.ingredients.create!(name: ingredient[:name],
-                                            unit_type: ingredient[:unitShort],
-                                            units: ingredient[:amount])
-          recipe[:missedIngredients].map do |ingredient|
-            recipe_created.ingredients.create!(name: ingredient[:name],
-                                              unit_type: ingredient[:unitShort],
-                                              units: ingredient[:amount])
-          end   
+                                             unit_type: ingredient[:unitShort],
+                                             units: ingredient[:amount])
         end
-        recipes_created << recipe_created
       end
+      recipes_created << recipe_created
     end
     Recipe.ingredient_search_details(@ingredients)
   end
@@ -40,9 +40,11 @@ class SpoonSearch
     instructions = []
     instructions_hash = recipe[:analyzedInstructions].first
     if instructions_hash
-    instructions_hash[:steps].each do |step|
-      instructions << step[:step] if step
-    end
+      instructions_hash[:steps].each do |step|
+        instructions << step[:step] if step
+      end
+    else
+      saved_recipe.update(instructions: 'see source')
     end
     saved_recipe.update(instructions: instructions.flatten,
                         cook_time: recipe[:readyInMinutes],
@@ -54,12 +56,12 @@ class SpoonSearch
   def name_search
     recipes = spoon_service.recipes_by_name(@name)
     recipes_found = recipes[:results].map do |recipe|
-      if !Recipe.find_by(api_id: recipe[:id])
-        Recipe.create!(name: recipe[:title],
-                      api_id: recipe[:id].to_s,
-                      image_url: recipe[:image],
-                      user_submitted: false)
-      end
+      next if Recipe.find_by(api_id: recipe[:id])
+
+      Recipe.create!(name: recipe[:title],
+                     api_id: recipe[:id].to_s,
+                     image_url: recipe[:image],
+                     user_submitted: false)
     end
     Recipe.find_name(@name)
   end
@@ -73,6 +75,8 @@ class SpoonSearch
       instructions_hash[:steps].each do |step|
         instructions << step[:step] if step
       end
+    else
+      saved_recipe.update(instructions: 'see source')
     end
     recipe[:extendedIngredients]&.each do |ingredient|
       saved_recipe.ingredients.create!(name: ingredient[:name],

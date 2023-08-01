@@ -44,9 +44,9 @@ RSpec.describe Recipe, type: :model do
     end
 
     it '#ingredient_search_details' do
-      expect(Recipe.ingredient_search_details(%w[sauce pasta garlic])).to eq([@recipe3, @recipe4, @recipe1])
-      expect(Recipe.ingredient_search_details(%w[chips salsa])).to eq([@recipe2])
-      expect(Recipe.ingredient_search_details(%w[pasta celery sauce])).to eq([@recipe3, @recipe4, @recipe1])
+      expect(Recipe.ingredient_search_details('sauce,+pasta,+garlic')).to eq([@recipe3, @recipe4, @recipe1])
+      expect(Recipe.ingredient_search_details('chips,+salsa')).to eq([@recipe2])
+      expect(Recipe.ingredient_search_details('pasta,+celery,+sauce')).to eq([@recipe3, @recipe4, @recipe1])
     end
   end
 end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.spoonacular.com/recipes/complexSearch?apiKey=apiKey&query=bruschetta,%20stuffed
+    uri: https://api.spoonacular.com/recipes/complexSearch?apiKey=apiKey&number=10&query=bruschetta,%20stuffed
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sun, 30 Jul 2023 03:37:41 GMT
+      - Mon, 31 Jul 2023 00:28:24 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -40,24 +40,24 @@ http_interactions:
       X-Api-Quota-Request:
       - '1.02'
       X-Api-Quota-Used:
-      - '18.46'
+      - '55.74000000000001'
       X-Api-Quota-Left:
-      - '131.54'
+      - '94.25999999999999'
       Cf-Cache-Status:
       - DYNAMIC
       Report-To:
-      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=4FCA1CopNAd%2FqFmWaEAJlUKNn%2BJggrzH0GC65R%2BmIuWUA4ml6i6vTywPVno1gWtDAaPck6a5a9l3ysDJFn0y6k7jqsTnRNmfYGkRg4IGc1NctbRqQwP2AqRWaUhi9XPAYI02huU%3D"}],"group":"cf-nel","max_age":604800}'
+      - '{"endpoints":[{"url":"https:\/\/a.nel.cloudflare.com\/report\/v3?s=%2BZq8HlO3L%2BBbHNbz3KF6hP%2Fk2x9Kx%2Fm4ku9hUJ7z%2FNYwEIm7BQwcPAotRshDrXxAoQwEqGVKcGllIn9CfnjsV8pDKVi4evwpQK0y1Nr2X4oT2ypxxVsp0OFZZE2uV37cwRV%2BYiw%3D"}],"group":"cf-nel","max_age":604800}'
       Nel:
       - '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}'
       Server:
       - cloudflare
       Cf-Ray:
-      - 7eea907fa9b58e9f-DEN
+      - 7ef1b8994a0a1f9a-DEN
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
       string: '{"results":[{"id":636356,"title":"Bruschetta Stuffed Potatoes","image":"https://spoonacular.com/recipeImages/636356-312x231.jpg","imageType":"jpg"},{"id":636355,"title":"BRUSCHETTA
         STUFFED PORTOBELLOS","image":"https://spoonacular.com/recipeImages/636355-312x231.jpg","imageType":"jpg"}],"offset":0,"number":10,"totalResults":2}'
-  recorded_at: Sun, 30 Jul 2023 03:37:41 GMT
+  recorded_at: Mon, 31 Jul 2023 00:28:24 GMT
 recorded_with: VCR 6.2.0

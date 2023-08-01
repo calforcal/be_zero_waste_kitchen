@@ -15,6 +15,9 @@
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require 'webmock/rspec'
+# include WebMock::API
+
+# WebMock.enable!
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
@@ -92,4 +95,86 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+end
+
+def recipe_search_data_ingredients
+  @recipe1 = Recipe.create!(name: 'Spaghetti with Marinara')
+  @recipe2 = Recipe.create!(name: 'Vegan Nachos')
+  @recipe3 = Recipe.create!(name: 'Pasta Primavera')
+  @recipe4 = Recipe.create!(name: 'Minestrone')
+  @recipe5 = Recipe.create!(name: 'Black Bean Soup')
+  @recipe6 = Recipe.create!(name: 'Vegan Cheese Sauce')
+  @recipe7 = Recipe.create!(name: 'Stir Fry')
+  @recipe8 = Recipe.create!(name: 'Lentil Soup')
+  @recipe9 = Recipe.create!(name: 'Bread Dipping Oil')
+  @recipe10 = Recipe.create!(name: 'Tofu Scramble')
+  @recipe11 = Recipe.create!(name: 'Pesto Sauce')
+  @recipe12 = Recipe.create!(name: 'Caldo Tlalpeno')
+
+  @recipe1.ingredients.create!(name: 'spaghetti', units: 1, unit_type: 'box')
+  @recipe1.ingredients.create!(name: 'sauce', units: 1, unit_type: 'can')
+  @recipe1.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+
+  @recipe2.ingredients.create!(name: 'chips', units: 1, unit_type: 'bag')
+  @recipe2.ingredients.create!(name: 'vegan cheese sauce', units: 1, unit_type: 'cup')
+  @recipe2.ingredients.create!(name: 'salsa', units: 1, unit_type: 'jar')
+  @recipe2.ingredients.create!(name: 'garlic', units: 1, unit_type: 'jar')
+
+  @recipe3.ingredients.create!(name: 'pasta', units: 1, unit_type: 'box')
+  @recipe3.ingredients.create!(name: 'sauce', units: 1, unit_type: 'jar')
+  @recipe3.ingredients.create!(name: 'garlic', units: 1, unit_type: 'clove')
+
+  @recipe4.ingredients.create!(name: 'garlic', units: 1, unit_type: 'clove')
+  @recipe4.ingredients.create!(name: 'pasta', units: 1, unit_type: 'cup')
+  @recipe4.ingredients.create!(name: 'celery', units: 1, unit_type: 'cup')
+  @recipe4.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
+
+  @recipe5.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
+  @recipe5.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe5.ingredients.create!(name: 'epazote', units: 1, unit_type: 'can')
+
+  @recipe6.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe6.ingredients.create!(name: 'potatoes', units: 1, unit_type: 'can')
+  @recipe6.ingredients.create!(name: 'cashews', units: 1, unit_type: 'can')
+  @recipe6.ingredients.create!(name: 'carrots', units: 1, unit_type: 'can')
+
+  @recipe7.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe7.ingredients.create!(name: 'tofu', units: 1, unit_type: 'can')
+  @recipe7.ingredients.create!(name: 'mushrooms', units: 1, unit_type: 'can')
+  @recipe7.ingredients.create!(name: 'chili garlic sauce', units: 1, unit_type: 'can')
+
+  @recipe8.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe8.ingredients.create!(name: 'lentils', units: 1, unit_type: 'can')
+  @recipe8.ingredients.create!(name: 'celery', units: 1, unit_type: 'can')
+
+  @recipe9.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe9.ingredients.create!(name: 'olive oil', units: 1, unit_type: 'can')
+  @recipe9.ingredients.create!(name: 'thyme', units: 1, unit_type: 'can')
+
+  @recipe10.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe10.ingredients.create!(name: 'tofu', units: 1, unit_type: 'can')
+  @recipe10.ingredients.create!(name: 'nutritional yeast', units: 1, unit_type: 'can')
+
+  @recipe11.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe11.ingredients.create!(name: 'basil', units: 1, unit_type: 'can')
+  @recipe11.ingredients.create!(name: 'silken tofu', units: 1, unit_type: 'can')
+
+  @recipe12.ingredients.create!(name: 'garlic', units: 1, unit_type: 'can')
+  @recipe12.ingredients.create!(name: 'lime', units: 1, unit_type: 'can')
+  @recipe12.ingredients.create!(name: 'chipotle chile', units: 1, unit_type: 'can')
+end
+
+def recipe_search_data_name
+  @recipe13 = Recipe.create!(name: 'Garlic Knots')
+  @recipe14 = Recipe.create!(name: 'Garlic Chicken')
+  @recipe15 = Recipe.create!(name: 'Garlic Stirfry')
+  @recipe16 = Recipe.create!(name: 'Garlic Noodles')
+  @recipe17 = Recipe.create!(name: 'Garlic Bread')
+  @recipe18 = Recipe.create!(name: 'Garlic Spread')
+  @recipe19 = Recipe.create!(name: 'Garlic Tofu')
+  @recipe20 = Recipe.create!(name: 'Garlic Soup')
+  @recipe21 = Recipe.create!(name: 'Cheesy Garlic Bread')
+  @recipe22 = Recipe.create!(name: 'Garlic Tapenade')
+  @recipe23 = Recipe.create!(name: 'Garlic Seitan')
+  @recipe24 = Recipe.create!(name: 'Roasted Garlic')
 end

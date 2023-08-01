@@ -183,7 +183,7 @@ describe 'Users API' do
         expect(user_created_recipes[:num_created_recipes]).to be_an Integer
       end
 
-      it 'can get the Number of one merchants saved recipes', :vcr do
+      it 'can get the Number of one users saved recipes', :vcr do
         get api_v1_user_path(user_1)
 
         expect(response).to be_successful
@@ -199,9 +199,9 @@ describe 'Users API' do
     end
   end
 
-  describe 'Create One Merchant' do
+  describe 'Create One User' do
     describe 'happy paths' do
-      it 'can create one merchant', :vcr do
+      it 'can create one user', :vcr do
         user_params = {
           uid: '000'
         }

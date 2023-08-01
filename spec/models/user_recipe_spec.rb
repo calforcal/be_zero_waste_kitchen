@@ -41,7 +41,7 @@ RSpec.describe UserRecipe, type: :model do
         num_stars: 4
       }
 
-      UserRecipe.create_user_recipe(params3)
+    UserRecipe.create_user_recipe(params3)
       association.reload
       expect(association.num_stars).to eq(4)
 

@@ -48,7 +48,7 @@ describe 'Users API' do
   describe 'Fetch One User' do
     describe 'happy paths' do
       it 'can get one user', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -78,7 +78,7 @@ describe 'Users API' do
       end
 
       it 'can get one merchants cooked recipes', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -104,7 +104,7 @@ describe 'Users API' do
       end
 
       it 'can get one merchants created recipes', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -130,7 +130,7 @@ describe 'Users API' do
       end
 
       it 'can get one merchants created recipes', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -156,7 +156,7 @@ describe 'Users API' do
       end
 
       it 'can get the Number of one merchants cooked recipes', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -170,7 +170,7 @@ describe 'Users API' do
       end
 
       it 'can get the Number of one merchants created recipes', :vcr do
-        get api_v1_user_path(user_1)
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 
@@ -183,8 +183,8 @@ describe 'Users API' do
         expect(user_created_recipes[:num_created_recipes]).to be_an Integer
       end
 
-      it 'can get the Number of one users saved recipes', :vcr do
-        get api_v1_user_path(user_1)
+      it 'can get the Number of one merchants saved recipes', :vcr do
+        get api_v1_user_path(user_1.uid)
 
         expect(response).to be_successful
 

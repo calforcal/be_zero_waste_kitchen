@@ -6,27 +6,24 @@ RSpec.describe "User Ingredients API", type: :request do
 
     let(:valid_params) do
       {
-        user_ingredients: {
-          uid: "#{user_1.uid}",
-          ingredients: [
-            {
-              ingredient_name: 'Flour',
-              units: 2.5,
-              unit_type: 'cups'
-            },
-            {
-              ingredient_name: 'Sugar',
-              units: 1,
-              unit_type: 'cup'
-            }
-          ]
-        }
+        uid: "#{user_1.uid}",
+        ingredients: [
+          {
+            ingredient_name: 'Flour',
+            units: 2.5,
+            unit_type: 'cups'
+          },
+          {
+            ingredient_name: 'Sugar',
+            units: 1,
+            unit_type: 'cup'
+          }
+        ]
       }
     end
 
     let(:invalid_params) do
       {
-        user_ingredients: {
           ingredients: [
             {
               ingredient_name: 'Flour',
@@ -35,7 +32,6 @@ RSpec.describe "User Ingredients API", type: :request do
             }
           ]
         }
-      }
     end
 
     it 'creates saved ingredients for the user' do

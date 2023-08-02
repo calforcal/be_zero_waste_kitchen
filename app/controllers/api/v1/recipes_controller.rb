@@ -14,6 +14,8 @@ class Api::V1::RecipesController < ApplicationController
       created_ingredients.each { |ingredient| created_recipe.recipe_ingredients.create!(ingredient_id: ingredient.id) }
     end
 
+    x = UserRecipe.create!(user_id: User.find_by(uid: params[:user_uid]).id, recipe_id: created_recipe.id, is_owner: true)
+
     render json: RecipeSerializer.new(created_recipe), status: :created
   end
 

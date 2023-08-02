@@ -19,6 +19,15 @@ class Api::V1::RecipesController < ApplicationController
     render json: RecipeSerializer.new(created_recipe), status: :created
   end
 
+  def show
+    if Recipe.exists?(params[:id])
+      recipe = Recipe.find(params[:id])
+      render json: RecipeSerializer.new(recipe)
+    else
+      render json: { error: "Recipe not found" }, status: 404
+    end
+  end
+
   private
 
   def recipe_params

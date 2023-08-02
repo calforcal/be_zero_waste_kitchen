@@ -5,7 +5,7 @@ describe 'Recipe API' do
 
   describe 'Create One Recipe' do
     describe 'happy paths' do
-      it 'can create one merchant' do
+      it 'can create one recipe' do
         recipe_params = {
           name: 'Dope Salad',
           instructions: '1. Rinse spinach and lettuce, 2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off',
@@ -87,6 +87,28 @@ describe 'Recipe API' do
         expect(first_ingredient.name).to eq(ingredients_params.first[:name])
         expect(first_ingredient.units).to eq(ingredients_params.first[:units])
         expect(first_ingredient.unit_type).to eq(ingredients_params.first[:unit_type])
+      end
+
+      it 'will create a user recipe for the user who created the recipe' do
+
+        expect(user_1.num_recipes_created).to eq(0)
+
+        recipe_params = {
+          name: 'Dope Salad',
+          instructions: '1. Rinse spinach and lettuce, 2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off',
+          cook_time: 10,
+          public_status: true,
+          source_name: user_1.uid,
+          source_url: api_v1_user_path(user_1),
+          user_submitted: true
+        }
+
+        headers = { 'CONTENT_TYPE' => 'application/json' }
+        post api_v1_recipes_path, headers:, params: JSON.generate(recipe: recipe_params, user_uid: user_1.uid)
+
+        created_recipe = Recipe.last
+
+        expect(user_1.num_recipes_created).to eq(1)
       end
     end
 

@@ -13,7 +13,7 @@ class SpoonSearch
     recipes = spoon_service.recipes_by_ingredients(@ingredients)
     recipes_created = []
     recipes.map do |recipe|
-      next if Recipe.find_by(api_id: recipe[:id].to_s)
+    if !Recipe.find_by(api_id: recipe[:id].to_s)
 
       recipe_created = Recipe.create!(name: recipe[:title],
                                       api_id: recipe[:id].to_s,
@@ -56,7 +56,7 @@ class SpoonSearch
   def name_search
     recipes = spoon_service.recipes_by_name(@name)
     recipes_found = recipes[:results].map do |recipe|
-      next if Recipe.find_by(api_id: recipe[:id])
+    if !Recipe.find_by(api_id: recipe[:id])
 
       Recipe.create!(name: recipe[:title],
                      api_id: recipe[:id].to_s,

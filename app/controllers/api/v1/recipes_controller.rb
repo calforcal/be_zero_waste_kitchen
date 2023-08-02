@@ -29,7 +29,6 @@ class Api::V1::RecipesController < ApplicationController
       recipe = Recipe.find(params[:id]).update!(recipe_params)
       updated_recipe = Recipe.find(params[:id])
       
-      # require 'pry'; binding.pry
       if params.has_key?(:ingredients) && !params[:ingredients].empty?
         updated_ingredients = ingredients_params(params)
         updated_recipe.ingredients.destroy_all
@@ -37,15 +36,12 @@ class Api::V1::RecipesController < ApplicationController
           updated_recipe.ingredients.create!(updated_ingredient)
         end
       end
-        
-      # require 'pry'; binding.pry
       render json: RecipeSerializer.new(updated_recipe), status: :ok
     else
       # SAD PATH - code to let user know they "You do not have access to update this recipe"
       # Maybe this is a front-end problem???
       # render json ErrorSerializer.new(:alert)
     end
-
   end
 
   private

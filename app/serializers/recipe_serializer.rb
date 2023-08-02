@@ -3,6 +3,7 @@ class RecipeSerializer
   attributes :name,
              :ingredients,
              :image_url,
+             :instructions,
              :cook_time,
              :public_status,
              :source_name,

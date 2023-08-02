@@ -29,9 +29,9 @@ class Api::V1::RecipesController < ApplicationController
       recipe = Recipe.find(params[:id]).update!(recipe_params)
       updated_recipe = Recipe.find(params[:id])
       
-      updated_ingredients = ingredients_params(params)
       # require 'pry'; binding.pry
-      unless updated_ingredients.nil?
+      if params.has_key?(:ingredients) && !params[:ingredients].empty?
+        updated_ingredients = ingredients_params(params)
         updated_recipe.ingredients.destroy_all
         updated_ingredients.each do |updated_ingredient|
           updated_recipe.ingredients.create!(updated_ingredient)

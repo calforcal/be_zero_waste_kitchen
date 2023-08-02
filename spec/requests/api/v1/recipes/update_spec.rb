@@ -61,9 +61,9 @@ describe 'Recipe API' do
 
       it 'can update ingredients and recipe_ingredients during recipe update' do
         recipe_params = {
-          name: 'Dope Salad',
-          instructions: '1. Rinse spinach and lettuce,2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off',
-          cook_time: 10,
+          name: 'Salad',
+          instructions: '1. Rinse spinach and lettuce, 4. Shake it off yeah yeah shake it off',
+          cook_time: 5,
           public_status: true,
           source_name: "Chef Mike",
           source_url: "www.chefmike.com",
@@ -124,12 +124,12 @@ describe 'Recipe API' do
           {
             name: 'Cabbage',
             units: 2.0,
-            unit_type: 'cups'
+            unit_type: 'ounces'
           },
           {
             name: 'Tomatoes',
             units: 1.0,
-            unit_type: 'cups'
+            unit_type: 'ounces'
           }
         ]
 
@@ -139,12 +139,23 @@ describe 'Recipe API' do
         updated_recipe = Recipe.last
         first_ingredient = updated_recipe.ingredients.first
         last_ingredient = updated_recipe.ingredients.last
-        # require 'pry'; binding.pry
         expect(updated_recipe.ingredients.count).to eq(2)
 
+        expect(first_ingredient.name).to_not eq(ingredients_params.first[:name])
         expect(first_ingredient.name).to eq(update_ingredients_params.first[:name])
-        # expect(first_ingredient.units).to eq(ingredients_params.first[:units])
-        # expect(first_ingredient.unit_type).to eq(ingredients_params.first[:unit_type])
+        expect(first_ingredient.name).to eq("Cabbage")
+
+        expect(first_ingredient.units).to_not eq(ingredients_params.first[:units])
+        expect(first_ingredient.units).to eq(update_ingredients_params.first[:units])
+        expect(first_ingredient.units).to eq(2.0)
+        
+        expect(first_ingredient.unit_type).to_not eq(ingredients_params.first[:unit_type])
+        expect(first_ingredient.unit_type).to eq(update_ingredients_params.first[:unit_type])
+        expect(first_ingredient.unit_type).to eq('ounces')
+
+        expect(last_ingredient.name).to_not eq(ingredients_params.last[:name])
+        expect(last_ingredient.name).to eq(update_ingredients_params.last[:name])
+        expect(last_ingredient.name).to eq("Tomatoes")
       end
     end
 

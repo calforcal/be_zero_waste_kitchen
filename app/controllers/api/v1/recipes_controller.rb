@@ -17,6 +17,26 @@ class Api::V1::RecipesController < ApplicationController
     render json: RecipeSerializer.new(created_recipe), status: :created
   end
 
+  def update
+    # Maybe, add find_recipe callback, so it stops if a recipe does not exists?
+    # For example, "The Recipe you requested does not exist."
+    if recipe_params[:api_id].nil?
+      
+      # updated_recipe = @recipe.update(recipe_params)
+      # ^^^ Ultimately would like to refactor to this code, after a find_recipe before_callback
+      # has been successfully created. For now going with code below:
+      recipe = Recipe.find(params[:id]).update!(recipe_params)
+      updated_recipe = Recipe.find(params[:id])
+      # require 'pry'; binding.pry
+      render json: RecipeSerializer.new(updated_recipe), status: :ok
+    else
+      # SAD PATH - code to let user know they "You do not have access to update this recipe"
+      # Maybe this is a front-end problem???
+      # render json ErrorSerializer.new(:alert)
+    end
+
+  end
+
   private
 
   def recipe_params
@@ -28,4 +48,7 @@ class Api::V1::RecipesController < ApplicationController
     add_commas = instruction.prepend(',') + ','
     add_commas.gsub(', ', ',')
   end
+
+  #Potential method for #find_recipe to be used as a callback before the recipes#show and recipes#update
+
 end

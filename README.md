@@ -60,6 +60,16 @@
 }
 ```
 
+### Delete One User
+<p> DELETE '/api/v1/user/:user_id’ </p>
+<p> Example of the body details to be provided when deleting a user </p>
+
+```
+{
+  "uid": "string"
+}
+```
+
 ### Create a Recipe
 <p> POST ‘/api/v1/user/:user_id/recipes’ </p>
 <p> Example of the body details to be provided when creating a recipe </p>
@@ -80,12 +90,12 @@
     {
       "name": "string",
       "units": "float",
-      "unit_type": "string" 
+      "unit_type": "string"
     },
     {
       "name": "string",
       "units": "float",
-      "unit_type": "string" 
+      "unit_type": "string"
     }
   ]
 }
@@ -115,7 +125,7 @@
     {
       "ingredient_name": "string",
       "units": "float",
-      "unit_type": "string" 
+      "unit_type": "string"
     }
   ]
 }

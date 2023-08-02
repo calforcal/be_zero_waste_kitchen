@@ -21,7 +21,7 @@ class Api::V1::UserIngredientsController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(id: params[:user_id])
+    @user = User.find_by(uid: params[:uid])
     unless @user
       render json: { error: 'User not found' }, status: :not_found
       return
@@ -29,6 +29,6 @@ class Api::V1::UserIngredientsController < ApplicationController
   end
 
   def user_ingredients_params
-    params.require(:user_ingredients).permit(:uid, ingredients: %i[ingredient_name units unit_type])
+    params.permit(:uid, ingredients: %i[ingredient_name units unit_type])
   end
 end

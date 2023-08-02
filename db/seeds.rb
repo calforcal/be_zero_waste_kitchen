@@ -39,20 +39,20 @@ user_1 = User.create!(uid: '123')
 
 user_1 = User.create!(uid: "123")
 
-recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "123456789123456789", instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
+recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "646660", instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.name, source_url: "/api/v1/users/#{user_1.id}")
 chicken = Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs')
 cheese = Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs')
 recipe_ingredients_1 = recipe_1.recipe_ingredients.create!(ingredient_id: chicken.id)
 recipe_ingredients_2 = recipe_1.recipe_ingredients.create!(ingredient_id: cheese.id)
 
-recipe_2 = Recipe.create!(name: 'Meatballs', api_id: '1234567891234567891',
+recipe_2 = Recipe.create!(name: 'Meatballs', api_id: '648268',
                           instructions: ['1. Cook the meatballs', '2. Cover in sauce', '3. Eat!'], image_url: 'meatballs path', cook_time: 22, public_status: true, source_name: 'Italian Chef', source_url: 'Italian Chef Web')
 ground_beef = Ingredient.create!(name: 'ground beef', units: 2.0, unit_type: 'lbs')
 eggs = Ingredient.create!(name: 'eggs', units: 2.0, unit_type: 'oz')
 recipe_ingredients_3 = recipe_1.recipe_ingredients.create!(ingredient_id: ground_beef.id)
 recipe_ingredients_4 = recipe_1.recipe_ingredients.create!(ingredient_id: eggs.id)
 
-recipe_3 = Recipe.create!(name: 'Pasta', api_id: '1234567891234567892',
+recipe_3 = Recipe.create!(name: 'Pasta', api_id: '1697591',
                           instructions: ['1. Cook Pasta', '2. Cover in butter and cheese', '3. Yum!'], image_url: 'yummy pasta url', cook_time: 10, public_status: true, source_name: 'Italian Chef', source_url: 'Italian Chef Web')
 pasta = Ingredient.create!(name: 'pasta', units: 1.0, unit_type: 'lbs')
 butter = Ingredient.create!(name: 'butter', units: 2, unit_type: 'oz')

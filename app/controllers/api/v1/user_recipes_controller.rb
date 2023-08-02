@@ -8,7 +8,7 @@ class Api::V1::UserRecipesController < ApplicationController
       update
     end
   end
-    
+
   def update
     user = find_user(params)
     user_recipe = UserRecipe.find_by(user_id: user.id, recipe_id: params[:recipe_id])
@@ -16,7 +16,7 @@ class Api::V1::UserRecipesController < ApplicationController
     user_recipe.update(user_recipe_update_params)
   end
 
-  private 
+  private
 
   def find_user(params)
     User.find_by(uid: params[:uid])

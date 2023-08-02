@@ -59,63 +59,93 @@ describe 'Recipe API' do
         expect(updated_recipe.user_submitted).to be(false)
       end
 
-      # it 'can update ingredients and recipe_ingredients during recipe update' do
-      #   recipe_params = {
-      #     name: 'Dope Salad',
-      #     instructions: '1. Rinse spinach and lettuce,2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off',
-      #     cook_time: 10,
-      #     public_status: true,
-      #     source_name: user_1.uid,
-      #     source_url: api_v1_user_path(user_1),
-      #     user_submitted: true
-      #   }
+      it 'can update ingredients and recipe_ingredients during recipe update' do
+        recipe_params = {
+          name: 'Dope Salad',
+          instructions: '1. Rinse spinach and lettuce,2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off',
+          cook_time: 10,
+          public_status: true,
+          source_name: "Chef Mike",
+          source_url: "www.chefmike.com",
+          user_submitted: true
+        }
 
-      #   ingredients_params = [
-      #     {
-      #       name: 'Spinach',
-      #       units: 1.0,
-      #       unit_type: 'cups'
-      #     },
-      #     {
-      #       name: 'Lettuce',
-      #       units: 1.0,
-      #       unit_type: 'cups'
-      #     },
-      #     {
-      #       name: 'Vegan Ranch',
-      #       units: 0.5,
-      #       unit_type: 'cups'
-      #     },
-      #     {
-      #       name: 'Chickpeas',
-      #       units: 0.5,
-      #       unit_type: 'cups'
-      #     },
-      #     {
-      #       name: 'Cherry Tomatoes',
-      #       units: 0.5,
-      #       unit_type: 'cups'
-      #     },
-      #     {
-      #       name: 'Strawberries',
-      #       units: 0.25,
-      #       unit_type: 'cups'
-      #     }
-      #   ]
+        ingredients_params = [
+          {
+            name: 'Spinach',
+            units: 1.0,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Lettuce',
+            units: 1.0,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Vegan Ranch',
+            units: 0.5,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Chickpeas',
+            units: 0.5,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Cherry Tomatoes',
+            units: 0.5,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Strawberries',
+            units: 0.25,
+            unit_type: 'cups'
+          }
+        ]
 
-      #   headers = { 'CONTENT_TYPE' => 'application/json' }
-      #   post api_v1_recipes_path, headers:,
-      #                             params: JSON.generate(recipe: recipe_params, ingredients: ingredients_params)
+        headers = { 'CONTENT_TYPE' => 'application/json' }
+        post api_v1_recipes_path, headers:,
+                                  params: JSON.generate(recipe: recipe_params, ingredients: ingredients_params)
 
-      #   created_recipe = Recipe.last
-      #   first_ingredient = created_recipe.ingredients.first
+        created_recipe = Recipe.last
+        id = created_recipe.id
 
-      #   expect(created_recipe.ingredients.count).to eq(6)
+        update_recipe_params = {
+          name: 'Dope Salad',
+          instructions: ",1. Rinse spinach and lettuce, 2. Get out that dressing give it a shake, 3. Add chickpeas and tomatoes and strawberries, 4. Shake it off yeah yeah shake it off,",
+          cook_time: 10,
+          public_status: true,
+          source_name: "Chef Mateo",
+          source_url: "www.chefmateo.com",
+          user_submitted: false
+        }
 
-      #   expect(first_ingredient.name).to eq(ingredients_params.first[:name])
-      #   expect(first_ingredient.units).to eq(ingredients_params.first[:units])
-      #   expect(first_ingredient.unit_type).to eq(ingredients_params.first[:unit_type])
-      # end
+        update_ingredients_params = [
+          {
+            name: 'Cabbage',
+            units: 2.0,
+            unit_type: 'cups'
+          },
+          {
+            name: 'Tomatoes',
+            units: 1.0,
+            unit_type: 'cups'
+          }
+        ]
+
+        put api_v1_recipe_path(created_recipe), headers:, params: JSON.generate(recipe: update_recipe_params, ingredients: update_ingredients_params)
+
+
+        updated_recipe = Recipe.last
+        first_ingredient = updated_recipe.ingredients.first
+        last_ingredient = updated_recipe.ingredients.last
+        # require 'pry'; binding.pry
+        expect(updated_recipe.ingredients.count).to eq(2)
+
+        expect(first_ingredient.name).to eq(update_ingredients_params.first[:name])
+        # expect(first_ingredient.units).to eq(ingredients_params.first[:units])
+        # expect(first_ingredient.unit_type).to eq(ingredients_params.first[:unit_type])
+      end
     end
 
     # describe 'sad paths' do

@@ -20,6 +20,7 @@ class Api::V1::RecipesController < ApplicationController
   def update
     # Maybe, add find_recipe callback, so it stops if a recipe does not exists?
     # For example, "The Recipe you requested does not exist."
+    # require 'pry'; binding.pry
     if recipe_params[:api_id].nil?
       
       # updated_recipe = @recipe.update(recipe_params)
@@ -27,6 +28,16 @@ class Api::V1::RecipesController < ApplicationController
       # has been successfully created. For now going with code below:
       recipe = Recipe.find(params[:id]).update!(recipe_params)
       updated_recipe = Recipe.find(params[:id])
+      
+      updated_ingredients = ingredients_params(params)
+      # require 'pry'; binding.pry
+      unless updated_ingredients.nil?
+        updated_recipe.ingredients.destroy_all
+        updated_ingredients.each do |updated_ingredient|
+          updated_recipe.ingredients.create!(updated_ingredient)
+        end
+      end
+        
       # require 'pry'; binding.pry
       render json: RecipeSerializer.new(updated_recipe), status: :ok
     else
@@ -42,6 +53,12 @@ class Api::V1::RecipesController < ApplicationController
   def recipe_params
     params.require(:recipe).permit(:name, :instructions, :image_url, :cook_time, :public_status, :source_name,
                                    :source_url, :user_submitted, :api_id)
+  end
+
+  def ingredients_params(params)
+    params.require(:ingredients).map do |ingredient|
+      ingredient.permit(:name, :instructions, :units, :unit_type)
+    end
   end
 
   def format_instructions(instruction)

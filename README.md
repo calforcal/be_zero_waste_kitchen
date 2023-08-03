@@ -115,7 +115,7 @@
 ```
 
 ### Create Saved Ingredients (user_ingredients)
-<p> POST ‘/api/v1/user/:user_id/ingredients’ </p>
+<p> POST ‘/api/v1/users/:user_id/ingredients’ </p>
 <p> Example of the body details to be provided when creating a saved recipe </p>
 
 ```

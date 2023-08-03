@@ -34,9 +34,9 @@ User.destroy_all
 @recipe4.ingredients.create!(name: 'celery', units: 1, unit_type: 'cup')
 @recipe4.ingredients.create!(name: 'beans', units: 1, unit_type: 'can')
 
-user_1 = User.create!(uid: '123')
+user_1 = User.create!(uid: "123")
 
-recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "646660", instructions: "1. Cook the chicken,2. Cover in sauce and cheese,3. Enjoy!", image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, image_url: "sweet_url", source_name: user_1.uid, source_url: "/api/v1/users/#{user_1.id}")
+recipe_1 = Recipe.create!(name: 'Chicken Parm', api_id: "646660", instructions: ['1. Cook the chicken', '2. Cover in sauce and cheese', '3. Enjoy!'], image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, source_name: user_1.uid, source_url: "/api/v1/users/#{user_1.id}")
 chicken = Ingredient.create!(name: 'Chicken', units: 2.0, unit_type: 'lbs')
 cheese = Ingredient.create!(name: 'Cheese', units: 0.5, unit_type: 'lbs')
 recipe_ingredients_1 = recipe_1.recipe_ingredients.create!(ingredient_id: chicken.id)

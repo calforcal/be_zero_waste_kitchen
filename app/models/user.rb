@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def emissions_reduction
     ingredient_string = ''
     saved_ingredients.each do |ingredient|
-      ingredient_string << "#{ingredient.units} #{ingredient.ingredient_name} #{ingredient.unit_type} "
+      ingredient_string << "#{ingredient.units.round(1)} #{ingredient.unit_type} #{ingredient.ingredient_name} "
     end
 
     @nutrition_facade = NutritionFacade.new(ingredient_string).total_ingredients

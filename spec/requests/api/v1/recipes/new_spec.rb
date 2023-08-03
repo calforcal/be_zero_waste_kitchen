@@ -17,7 +17,7 @@ describe 'Recipe API' do
         }
 
         headers = { 'CONTENT_TYPE' => 'application/json' }
-        post api_v1_recipes_path, headers:, params: JSON.generate(recipe: recipe_params)
+        post api_v1_recipes_path, headers:, params: JSON.generate(recipe: recipe_params, user_uid: user_1.uid)
 
         created_recipe = Recipe.last
 
@@ -77,7 +77,7 @@ describe 'Recipe API' do
 
         headers = { 'CONTENT_TYPE' => 'application/json' }
         post api_v1_recipes_path, headers:,
-                                  params: JSON.generate(recipe: recipe_params, ingredients: ingredients_params)
+                                  params: JSON.generate(user_uid: user_1.uid, recipe: recipe_params, ingredients: ingredients_params)
 
         created_recipe = Recipe.last
         first_ingredient = created_recipe.ingredients.first

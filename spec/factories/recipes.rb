@@ -1,12 +1,11 @@
 FactoryBot.define do
   factory :recipe do
-    name { 'MyString' }
-    instructions { 'MyString' }
-    image_url { 'MyString' }
-    api_rating { 1.5 }
+    name { 'Banana Foster' }
+    instructions { ",1. Eat,2. Enjoy," }
+    image_url { 'banana_foster_image.com' }
     cook_time { 1 }
-    public_status { false }
-    source_name { 'MyString' }
-    source_url { 'MyString' }
+    public_status { true }
+    source_name { 'Chef Mateo' }
+    source_url { 'www.chefmateo.com' }
   end
 end

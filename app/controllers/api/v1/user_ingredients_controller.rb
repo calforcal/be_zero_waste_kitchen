@@ -14,7 +14,6 @@ class Api::V1::UserIngredientsController < ApplicationController
         unit_type: ingredient[:unit_type]
       )
     end
-
     render json: { message: 'Saved ingredients successfully' }, status: :created
   end
 

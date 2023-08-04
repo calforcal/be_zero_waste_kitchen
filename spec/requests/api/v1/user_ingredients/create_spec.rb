@@ -36,7 +36,7 @@ RSpec.describe "User Ingredients API", type: :request do
 
     it 'creates saved ingredients for the user' do
       headers = { 'CONTENT_TYPE' => 'application/json' }
-      post "/api/v1/user/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(valid_params)
+      post "/api/v1/users/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(valid_params)
       expect(response).to be_successful
 
       expect(user_1.saved_ingredients.pluck(:ingredient_name)).to include("Flour", "Sugar")
@@ -44,14 +44,14 @@ RSpec.describe "User Ingredients API", type: :request do
 
     it 'does not create saved ingredients and returns unprocessable_entity status' do
       headers = { 'CONTENT_TYPE' => 'application/json' }
-      post "/api/v1/user/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(invalid_params)
+      post "/api/v1/users/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(invalid_params)
       expect(response).to_not be_successful
     end
 
     context 'when user does not exist' do
       it 'returns not_found status' do
         headers = { 'CONTENT_TYPE' => 'application/json' }
-        post "/api/v1/user/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(invalid_params)
+        post "/api/v1/users/#{user_1.id}/ingredients", headers: headers, params: JSON.generate(invalid_params)
         expect(response).to_not be_successful
       end
     end

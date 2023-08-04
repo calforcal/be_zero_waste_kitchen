@@ -1,7 +1,7 @@
 class Api::V1::UserRecipesController < ApplicationController
   def create
     user = find_user(params)
-    user_recipe = UserRecipe.find_by(user_id: user.id, recipe_id: user_recipe_params[:recipe_id])
+    user_recipe = UserRecipe.find_by(user_id: user.id, recipe_id: params[:recipe_id])
     if !user_recipe
       user.user_recipes.create!(user_recipe_params)
     else
